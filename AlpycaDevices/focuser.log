@@ -1,0 +1,208 @@
+2023-09-04T19:20:27.238 INFO ==STARTUP== Serving on :5555. Time stamps are UTC.
+2023-09-04T19:20:32.243 INFO 192.168.15.162 -> PUT /api/v1/focuser/0/connected
+2023-09-04T19:20:32.243 INFO 192.168.15.162 -> {'ClientTransactionID': '1', 'ClientID': '44655', 'Connected': 'True'}
+2023-09-04T19:20:33.258 INFO [connected]
+2023-09-04T19:20:33.273 INFO 192.168.15.162 -> GET /api/v1/focuser/0/name?ClientTransactionID=2&ClientID=44655
+2023-09-04T19:20:33.273 INFO 192.168.15.162 <- LNA Focuser
+2023-09-04T19:20:33.288 INFO 192.168.15.162 -> GET /api/v1/focuser/0/description?ClientTransactionID=3&ClientID=44655
+2023-09-04T19:20:33.288 INFO 192.168.15.162 <- Focuser Driver for Perkin-Elmer Focuser
+2023-09-04T19:20:33.304 INFO 192.168.15.162 -> GET /api/v1/focuser/0/position?ClientTransactionID=4&ClientID=44655
+2023-09-04T19:20:34.366 ERROR Error reading position: invalid literal for int() with base 10: ''
+2023-09-04T19:20:34.435 INFO 192.168.15.162 <- 0
+2023-09-04T19:20:34.460 INFO 192.168.15.162 -> GET /api/v1/focuser/0/position?ClientTransactionID=5&ClientID=44655
+2023-09-04T19:20:34.529 INFO 192.168.15.162 <- 0
+2023-09-04T19:20:34.531 INFO 192.168.15.162 -> PUT /api/v1/focuser/0/move
+2023-09-04T19:20:34.531 INFO 192.168.15.162 -> {'ClientTransactionID': '6', 'ClientID': '44655', 'Position': '500'}
+2023-09-04T19:20:34.598 INFO 192.168.15.162 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=7&ClientID=44655
+2023-09-04T19:20:34.598 INFO 192.168.15.162 <- True
+2023-09-04T19:20:39.616 INFO 192.168.15.162 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=8&ClientID=44655
+2023-09-04T19:20:39.616 INFO 192.168.15.162 <- False
+2023-09-04T19:20:39.631 INFO 192.168.15.162 -> GET /api/v1/focuser/0/position?ClientTransactionID=9&ClientID=44655
+2023-09-04T19:20:39.702 INFO 192.168.15.162 <- 500
+2023-09-04T19:20:39.725 INFO 192.168.15.162 -> PUT /api/v1/focuser/0/connected
+2023-09-04T19:20:39.725 INFO 192.168.15.162 -> {'ClientTransactionID': '10', 'ClientID': '44655', 'Connected': 'False'}
+2023-09-04T19:20:39.726 INFO [disconnected]
+2023-09-04T19:20:53.947 INFO 192.168.15.162 -> PUT /api/v1/focuser/0/connected
+2023-09-04T19:20:53.947 INFO 192.168.15.162 -> {'ClientTransactionID': '1', 'ClientID': '62461', 'Connected': 'True'}
+2023-09-04T19:20:54.960 INFO [connected]
+2023-09-04T19:20:54.976 INFO 192.168.15.162 -> GET /api/v1/focuser/0/name?ClientTransactionID=2&ClientID=62461
+2023-09-04T19:20:54.976 INFO 192.168.15.162 <- LNA Focuser
+2023-09-04T19:20:54.979 INFO 192.168.15.162 -> GET /api/v1/focuser/0/description?ClientTransactionID=3&ClientID=62461
+2023-09-04T19:20:54.979 INFO 192.168.15.162 <- Focuser Driver for Perkin-Elmer Focuser
+2023-09-04T19:20:54.991 INFO 192.168.15.162 -> GET /api/v1/focuser/0/position?ClientTransactionID=4&ClientID=62461
+2023-09-04T19:20:56.056 ERROR Error reading position: invalid literal for int() with base 10: ''
+2023-09-04T19:20:56.127 INFO 192.168.15.162 <- 0
+2023-09-04T19:20:56.150 INFO 192.168.15.162 -> GET /api/v1/focuser/0/position?ClientTransactionID=5&ClientID=62461
+2023-09-04T19:20:56.216 INFO 192.168.15.162 <- 0
+2023-09-04T19:20:56.240 INFO 192.168.15.162 -> PUT /api/v1/focuser/0/move
+2023-09-04T19:20:56.240 INFO 192.168.15.162 -> {'ClientTransactionID': '6', 'ClientID': '62461', 'Position': '500'}
+2023-09-04T19:20:56.334 INFO 192.168.15.162 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=7&ClientID=62461
+2023-09-04T19:20:56.334 INFO 192.168.15.162 <- True
+2023-09-04T19:20:56.350 INFO 192.168.15.162 -> GET /api/v1/focuser/0/position?ClientTransactionID=8&ClientID=62461
+2023-09-04T19:20:56.421 INFO 192.168.15.162 <- 3
+2023-09-04T19:21:01.441 INFO 192.168.15.162 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=9&ClientID=62461
+2023-09-04T19:21:01.441 INFO 192.168.15.162 <- False
+2023-09-04T19:21:01.457 INFO 192.168.15.162 -> GET /api/v1/focuser/0/position?ClientTransactionID=10&ClientID=62461
+2023-09-04T19:21:01.529 INFO 192.168.15.162 <- 500
+2023-09-04T19:21:01.531 INFO 192.168.15.162 -> PUT /api/v1/focuser/0/connected
+2023-09-04T19:21:01.531 INFO 192.168.15.162 -> {'ClientTransactionID': '11', 'ClientID': '62461', 'Connected': 'False'}
+2023-09-04T19:21:01.533 INFO [disconnected]
+2023-09-04T19:21:14.010 INFO 192.168.15.162 -> PUT /api/v1/focuser/0/connected
+2023-09-04T19:21:14.010 INFO 192.168.15.162 -> {'ClientTransactionID': '1', 'ClientID': '49345', 'Connected': 'True'}
+2023-09-04T19:21:15.028 INFO [connected]
+2023-09-04T19:21:15.044 INFO 192.168.15.162 -> GET /api/v1/focuser/0/name?ClientTransactionID=2&ClientID=49345
+2023-09-04T19:21:15.044 INFO 192.168.15.162 <- LNA Focuser
+2023-09-04T19:21:15.059 INFO 192.168.15.162 -> GET /api/v1/focuser/0/description?ClientTransactionID=3&ClientID=49345
+2023-09-04T19:21:15.059 INFO 192.168.15.162 <- Focuser Driver for Perkin-Elmer Focuser
+2023-09-04T19:21:15.061 INFO 192.168.15.162 -> GET /api/v1/focuser/0/position?ClientTransactionID=4&ClientID=49345
+2023-09-04T19:21:16.131 ERROR Error reading position: invalid literal for int() with base 10: ''
+2023-09-04T19:21:16.204 INFO 192.168.15.162 <- 0
+2023-09-04T19:21:16.225 INFO 192.168.15.162 -> GET /api/v1/focuser/0/position?ClientTransactionID=5&ClientID=49345
+2023-09-04T19:21:16.294 INFO 192.168.15.162 <- 0
+2023-09-04T19:21:16.319 INFO 192.168.15.162 -> PUT /api/v1/focuser/0/move
+2023-09-04T19:21:16.319 INFO 192.168.15.162 -> {'ClientTransactionID': '6', 'ClientID': '49345', 'Position': '500'}
+2023-09-04T19:21:16.396 INFO 192.168.15.162 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=7&ClientID=49345
+2023-09-04T19:21:16.396 INFO 192.168.15.162 <- True
+2023-09-04T19:21:16.412 INFO 192.168.15.162 -> GET /api/v1/focuser/0/position?ClientTransactionID=8&ClientID=49345
+2023-09-04T19:21:16.482 INFO 192.168.15.162 <- 2
+2023-09-04T19:21:17.006 INFO 192.168.15.162 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=9&ClientID=49345
+2023-09-04T19:21:17.006 INFO 192.168.15.162 <- True
+2023-09-04T19:21:17.021 INFO 192.168.15.162 -> GET /api/v1/focuser/0/position?ClientTransactionID=10&ClientID=49345
+2023-09-04T19:21:17.093 INFO 192.168.15.162 <- 35
+2023-09-04T19:21:17.614 INFO 192.168.15.162 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=11&ClientID=49345
+2023-09-04T19:21:17.614 INFO 192.168.15.162 <- True
+2023-09-04T19:21:17.630 INFO 192.168.15.162 -> GET /api/v1/focuser/0/position?ClientTransactionID=12&ClientID=49345
+2023-09-04T19:21:17.703 INFO 192.168.15.162 <- 105
+2023-09-04T19:21:18.222 INFO 192.168.15.162 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=13&ClientID=49345
+2023-09-04T19:21:18.222 INFO 192.168.15.162 <- True
+2023-09-04T19:21:18.238 INFO 192.168.15.162 -> GET /api/v1/focuser/0/position?ClientTransactionID=14&ClientID=49345
+2023-09-04T19:21:18.309 INFO 192.168.15.162 <- 211
+2023-09-04T19:21:18.819 INFO 192.168.15.162 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=15&ClientID=49345
+2023-09-04T19:21:18.819 INFO 192.168.15.162 <- True
+2023-09-04T19:21:18.821 INFO 192.168.15.162 -> GET /api/v1/focuser/0/position?ClientTransactionID=16&ClientID=49345
+2023-09-04T19:21:18.891 INFO 192.168.15.162 <- 331
+2023-09-04T19:21:19.412 INFO 192.168.15.162 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=17&ClientID=49345
+2023-09-04T19:21:19.412 INFO 192.168.15.162 <- True
+2023-09-04T19:21:19.427 INFO 192.168.15.162 -> GET /api/v1/focuser/0/position?ClientTransactionID=18&ClientID=49345
+2023-09-04T19:21:19.501 INFO 192.168.15.162 <- 425
+2023-09-04T19:21:20.023 INFO 192.168.15.162 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=19&ClientID=49345
+2023-09-04T19:21:20.023 INFO 192.168.15.162 <- True
+2023-09-04T19:21:20.026 INFO 192.168.15.162 -> GET /api/v1/focuser/0/position?ClientTransactionID=20&ClientID=49345
+2023-09-04T19:21:20.094 INFO 192.168.15.162 <- 480
+2023-09-04T19:21:20.602 INFO 192.168.15.162 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=21&ClientID=49345
+2023-09-04T19:21:20.603 INFO 192.168.15.162 <- True
+2023-09-04T19:21:20.617 INFO 192.168.15.162 -> GET /api/v1/focuser/0/position?ClientTransactionID=22&ClientID=49345
+2023-09-04T19:21:20.689 INFO 192.168.15.162 <- 500
+2023-09-04T19:21:21.212 INFO 192.168.15.162 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=23&ClientID=49345
+2023-09-04T19:21:21.212 INFO 192.168.15.162 <- False
+2023-09-04T19:21:21.227 INFO 192.168.15.162 -> GET /api/v1/focuser/0/position?ClientTransactionID=24&ClientID=49345
+2023-09-04T19:21:21.299 INFO 192.168.15.162 <- 500
+2023-09-04T19:21:21.322 INFO 192.168.15.162 -> PUT /api/v1/focuser/0/connected
+2023-09-04T19:21:21.322 INFO 192.168.15.162 -> {'ClientTransactionID': '25', 'ClientID': '49345', 'Connected': 'False'}
+2023-09-04T19:21:21.323 INFO [disconnected]
+2023-09-04T19:26:14.925 INFO 192.168.15.162 -> PUT /api/v1/focuser/0/connected
+2023-09-04T19:26:14.925 INFO 192.168.15.162 -> {'ClientTransactionID': '1', 'ClientID': '24183', 'Connected': 'True'}
+2023-09-04T19:26:15.943 INFO [connected]
+2023-09-04T19:26:15.959 INFO 192.168.15.162 -> GET /api/v1/focuser/0/name?ClientTransactionID=2&ClientID=24183
+2023-09-04T19:26:15.959 INFO 192.168.15.162 <- LNA Focuser
+2023-09-04T19:26:15.975 INFO 192.168.15.162 -> GET /api/v1/focuser/0/description?ClientTransactionID=3&ClientID=24183
+2023-09-04T19:26:15.975 INFO 192.168.15.162 <- Focuser Driver for Perkin-Elmer Focuser
+2023-09-04T19:26:15.977 INFO 192.168.15.162 -> GET /api/v1/focuser/0/position?ClientTransactionID=4&ClientID=24183
+2023-09-04T19:26:17.051 ERROR Error reading position: invalid literal for int() with base 10: ''
+2023-09-04T19:26:17.122 INFO 192.168.15.162 <- 0
+2023-09-04T19:26:17.125 INFO 192.168.15.162 -> GET /api/v1/focuser/0/position?ClientTransactionID=5&ClientID=24183
+2023-09-04T19:26:17.196 INFO 192.168.15.162 <- 0
+2023-09-04T19:26:17.221 INFO 192.168.15.162 -> PUT /api/v1/focuser/0/move
+2023-09-04T19:26:17.221 INFO 192.168.15.162 -> {'ClientTransactionID': '6', 'ClientID': '24183', 'Position': '500'}
+2023-09-04T19:26:17.315 INFO 192.168.15.162 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=7&ClientID=24183
+2023-09-04T19:26:17.315 INFO 192.168.15.162 <- True
+2023-09-04T19:26:17.330 INFO 192.168.15.162 -> GET /api/v1/focuser/0/position?ClientTransactionID=8&ClientID=24183
+2023-09-04T19:26:17.401 INFO 192.168.15.162 <- 3
+2023-09-04T19:26:17.925 INFO 192.168.15.162 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=9&ClientID=24183
+2023-09-04T19:26:17.925 INFO 192.168.15.162 <- True
+2023-09-04T19:26:17.940 INFO 192.168.15.162 -> GET /api/v1/focuser/0/position?ClientTransactionID=10&ClientID=24183
+2023-09-04T19:26:18.012 INFO 192.168.15.162 <- 36
+2023-09-04T19:26:18.532 INFO 192.168.15.162 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=11&ClientID=24183
+2023-09-04T19:26:18.532 INFO 192.168.15.162 <- True
+2023-09-04T19:26:18.547 INFO 192.168.15.162 -> GET /api/v1/focuser/0/position?ClientTransactionID=12&ClientID=24183
+2023-09-04T19:26:18.617 INFO 192.168.15.162 <- 107
+2023-09-04T19:26:19.129 INFO 192.168.15.162 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=13&ClientID=24183
+2023-09-04T19:26:19.129 INFO 192.168.15.162 <- True
+2023-09-04T19:26:19.142 INFO 192.168.15.162 -> GET /api/v1/focuser/0/position?ClientTransactionID=14&ClientID=24183
+2023-09-04T19:26:19.215 INFO 192.168.15.162 <- 212
+2023-09-04T19:26:19.739 INFO 192.168.15.162 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=15&ClientID=24183
+2023-09-04T19:26:19.739 INFO 192.168.15.162 <- True
+2023-09-04T19:26:19.741 INFO 192.168.15.162 -> GET /api/v1/focuser/0/position?ClientTransactionID=16&ClientID=24183
+2023-09-04T19:26:19.814 INFO 192.168.15.162 <- 335
+2023-09-04T19:26:20.318 INFO 192.168.15.162 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=17&ClientID=24183
+2023-09-04T19:26:20.318 INFO 192.168.15.162 <- True
+2023-09-04T19:26:20.332 INFO 192.168.15.162 -> GET /api/v1/focuser/0/position?ClientTransactionID=18&ClientID=24183
+2023-09-04T19:26:20.403 INFO 192.168.15.162 <- 425
+2023-09-04T19:26:20.929 INFO 192.168.15.162 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=19&ClientID=24183
+2023-09-04T19:26:20.929 INFO 192.168.15.162 <- True
+2023-09-04T19:26:20.931 INFO 192.168.15.162 -> GET /api/v1/focuser/0/position?ClientTransactionID=20&ClientID=24183
+2023-09-04T19:26:21.002 INFO 192.168.15.162 <- 480
+2023-09-04T19:26:21.525 INFO 192.168.15.162 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=21&ClientID=24183
+2023-09-04T19:26:21.525 INFO 192.168.15.162 <- True
+2023-09-04T19:26:21.540 INFO 192.168.15.162 -> GET /api/v1/focuser/0/position?ClientTransactionID=22&ClientID=24183
+2023-09-04T19:26:21.615 INFO 192.168.15.162 <- 500
+2023-09-04T19:26:22.133 INFO 192.168.15.162 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=23&ClientID=24183
+2023-09-04T19:26:22.133 INFO 192.168.15.162 <- False
+2023-09-04T19:26:22.148 INFO 192.168.15.162 -> GET /api/v1/focuser/0/position?ClientTransactionID=24&ClientID=24183
+2023-09-04T19:26:22.221 INFO 192.168.15.162 <- 500
+2023-09-04T19:26:22.241 INFO 192.168.15.162 -> PUT /api/v1/focuser/0/connected
+2023-09-04T19:26:22.241 INFO 192.168.15.162 -> {'ClientTransactionID': '25', 'ClientID': '24183', 'Connected': 'False'}
+2023-09-04T19:26:22.242 INFO [disconnected]
+2023-09-04T19:26:37.501 INFO 192.168.15.162 -> PUT /api/v1/focuser/0/connected
+2023-09-04T19:26:37.501 INFO 192.168.15.162 -> {'ClientTransactionID': '1', 'ClientID': '59162', 'Connected': 'True'}
+2023-09-04T19:26:38.515 INFO [connected]
+2023-09-04T19:26:38.517 INFO 192.168.15.162 -> GET /api/v1/focuser/0/name?ClientTransactionID=2&ClientID=59162
+2023-09-04T19:26:38.518 INFO 192.168.15.162 <- LNA Focuser
+2023-09-04T19:26:38.530 INFO 192.168.15.162 -> GET /api/v1/focuser/0/description?ClientTransactionID=3&ClientID=59162
+2023-09-04T19:26:38.530 INFO 192.168.15.162 <- Focuser Driver for Perkin-Elmer Focuser
+2023-09-04T19:26:38.533 INFO 192.168.15.162 -> GET /api/v1/focuser/0/position?ClientTransactionID=4&ClientID=59162
+2023-09-04T19:26:39.594 ERROR Error reading position: invalid literal for int() with base 10: ''
+2023-09-04T19:26:39.666 INFO 192.168.15.162 <- 0
+2023-09-04T19:26:39.688 INFO 192.168.15.162 -> GET /api/v1/focuser/0/position?ClientTransactionID=5&ClientID=59162
+2023-09-04T19:26:39.760 INFO 192.168.15.162 <- 0
+2023-09-04T19:26:39.784 INFO 192.168.15.162 -> PUT /api/v1/focuser/0/move
+2023-09-04T19:26:39.784 INFO 192.168.15.162 -> {'ClientTransactionID': '6', 'ClientID': '59162', 'Position': '500'}
+2023-09-04T19:26:39.876 INFO 192.168.15.162 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=7&ClientID=59162
+2023-09-04T19:26:39.876 INFO 192.168.15.162 <- True
+2023-09-04T19:26:39.892 INFO 192.168.15.162 -> GET /api/v1/focuser/0/position?ClientTransactionID=8&ClientID=59162
+2023-09-04T19:26:39.965 INFO 192.168.15.162 <- 3
+2023-09-04T19:26:40.476 INFO 192.168.15.162 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=9&ClientID=59162
+2023-09-04T19:26:40.476 INFO 192.168.15.162 <- True
+2023-09-04T19:26:40.478 INFO 192.168.15.162 -> GET /api/v1/focuser/0/position?ClientTransactionID=10&ClientID=59162
+2023-09-04T19:26:40.546 INFO 192.168.15.162 <- 34
+2023-09-04T19:26:41.059 INFO 192.168.15.162 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=11&ClientID=59162
+2023-09-04T19:26:41.060 INFO 192.168.15.162 <- True
+2023-09-04T19:26:41.062 INFO 192.168.15.162 -> GET /api/v1/focuser/0/position?ClientTransactionID=12&ClientID=59162
+2023-09-04T19:26:41.128 INFO 192.168.15.162 <- 99
+2023-09-04T19:26:41.646 INFO 192.168.15.162 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=13&ClientID=59162
+2023-09-04T19:26:41.646 INFO 192.168.15.162 <- True
+2023-09-04T19:26:41.649 INFO 192.168.15.162 -> GET /api/v1/focuser/0/position?ClientTransactionID=14&ClientID=59162
+2023-09-04T19:26:41.718 INFO 192.168.15.162 <- 200
+2023-09-04T19:26:42.240 INFO 192.168.15.162 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=15&ClientID=59162
+2023-09-04T19:26:42.240 INFO 192.168.15.162 <- True
+2023-09-04T19:26:42.256 INFO 192.168.15.162 -> GET /api/v1/focuser/0/position?ClientTransactionID=16&ClientID=59162
+2023-09-04T19:26:42.324 INFO 192.168.15.162 <- 326
+2023-09-04T19:26:42.848 INFO 192.168.15.162 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=17&ClientID=59162
+2023-09-04T19:26:42.848 INFO 192.168.15.162 <- True
+2023-09-04T19:26:42.863 INFO 192.168.15.162 -> GET /api/v1/focuser/0/position?ClientTransactionID=18&ClientID=59162
+2023-09-04T19:26:42.935 INFO 192.168.15.162 <- 421
+2023-09-04T19:26:43.457 INFO 192.168.15.162 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=19&ClientID=59162
+2023-09-04T19:26:43.457 INFO 192.168.15.162 <- True
+2023-09-04T19:26:43.459 INFO 192.168.15.162 -> GET /api/v1/focuser/0/position?ClientTransactionID=20&ClientID=59162
+2023-09-04T19:26:43.533 INFO 192.168.15.162 <- 478
+2023-09-04T19:26:44.052 INFO 192.168.15.162 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=21&ClientID=59162
+2023-09-04T19:26:44.052 INFO 192.168.15.162 <- True
+2023-09-04T19:26:44.067 INFO 192.168.15.162 -> GET /api/v1/focuser/0/position?ClientTransactionID=22&ClientID=59162
+2023-09-04T19:26:44.139 INFO 192.168.15.162 <- 500
+2023-09-04T19:26:44.663 INFO 192.168.15.162 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=23&ClientID=59162
+2023-09-04T19:26:44.663 INFO 192.168.15.162 <- False
+2023-09-04T19:26:44.665 INFO 192.168.15.162 -> GET /api/v1/focuser/0/position?ClientTransactionID=24&ClientID=59162
+2023-09-04T19:26:44.737 INFO 192.168.15.162 <- 500
+2023-09-04T19:26:44.757 INFO 192.168.15.162 -> PUT /api/v1/focuser/0/connected
+2023-09-04T19:26:44.757 INFO 192.168.15.162 -> {'ClientTransactionID': '25', 'ClientID': '59162', 'Connected': 'False'}
+2023-09-04T19:26:44.758 INFO [disconnected]
