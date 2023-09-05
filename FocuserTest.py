@@ -1,21 +1,21 @@
 import time
-from alpaca.focuser import *      # Multiple Classes including Enumerations
-from alpaca.exceptions import *     # Or just the exceptions you want to catch
+from alpaca.focuser import *      
+from alpaca.exceptions import *     
 
-F = Focuser('192.168.15.162:5555', 0) # Local Omni Simulator
+F = Focuser('192.168.15.162:5555', 0) 
 try:
     F.Connected = True
     print(f'Connected to {F.Name}')
     print(F.Description)
     print(f'Focuser position: {F.Position}')
-    F.Move(F.Position+500)    # 2 hrs east of meridian
+    F.Move(F.Position+500)    
     while(F.IsMoving):
         print(f"Pos: {F.Position}")
-        time.sleep(.5)               # What do a few seconds matter?
+        time.sleep(.5)               
     print('... Movimentacao completa.')
     print(f'POSICAO={F.Position} ')    
-except Exception as e:              # Should catch specific InvalidOperationException
-    print(f'Slew failed: {str(e)}')
-finally:                            # Assure that you disconnect
+except Exception as e:              
+    print(f'Movimentacao falhou: {str(e)}')
+finally:                            
     print("Disconnecting...")
     F.Connected = False
