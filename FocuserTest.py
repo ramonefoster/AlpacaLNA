@@ -1,8 +1,11 @@
 import time
 from alpaca.focuser import *      
 from alpaca.exceptions import *     
+from alpaca import discovery
 
-F = Focuser('192.168.15.162:5555', 0) 
+svrs = discovery.search_ipv4()  # Note there is an IPv6 function as well
+print(svrs)
+F = Focuser('127.0.0.1:5555', 0) 
 try:
     F.Connected = True
     print(f'Connected to {F.Name}')

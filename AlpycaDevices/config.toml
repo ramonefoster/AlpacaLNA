@@ -1,4 +1,4 @@
-title = "Alpaca LNA Driver (Focuser)"
+title = "Alpaca LNA Drivers"
 
 [network]
 ip_address = ''             # Any address

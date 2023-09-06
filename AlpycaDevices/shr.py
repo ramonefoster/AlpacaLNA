@@ -80,7 +80,7 @@ def set_shr_logger(lgr):
 class DeviceMetadata:
     """ Metadata describing the Alpaca Device/Server """
     Version = '0.2'
-    Description = 'Alpaca Sample Focuser '
+    Description = 'Alpaca LNA'
     Manufacturer = 'ASCOM Initiative'
 
 

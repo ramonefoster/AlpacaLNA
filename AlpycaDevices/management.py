@@ -48,6 +48,7 @@ from config import Config
 from logging import Logger
 # For each *type* of device served
 from focuser import FocuserMetadata
+from rotator import RotatorMetadata
 
 logger: Logger = None
 #logger = None                   # Safe on Python 3.7 but no intellisense in VSCode etc.
@@ -88,6 +89,13 @@ class configureddevices():
             'DeviceType'    : FocuserMetadata.DeviceType,
             'DeviceNumber'  : 0,
             'UniqueID'      : FocuserMetadata.DeviceID
+            },
+            {
+            'DeviceName'    : RotatorMetadata.Name,
+            'DeviceType'    : RotatorMetadata.DeviceType,
+            'DeviceNumber'  : 1,
+            'UniqueID'      : RotatorMetadata.DeviceID
             }
         ]
+        
         resp.text = PropertyResponse(confarray, req).json
