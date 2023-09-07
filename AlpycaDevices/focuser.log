@@ -1,0 +1,276 @@
+2023-09-07T14:02:56.923 INFO ==STARTUP== Serving on :5555. Time stamps are UTC.
+2023-09-07T14:03:01.505 INFO Disc rcv alpacadiscovery1 from ('192.168.15.162', 52558)
+2023-09-07T14:03:03.518 INFO Disc rcv alpacadiscovery1 from ('127.0.0.1', 52558)
+2023-09-07T14:03:05.541 INFO Disc rcv alpacadiscovery1 from ('192.168.15.162', 52558)
+2023-09-07T14:03:07.549 INFO Disc rcv alpacadiscovery1 from ('127.0.0.1', 52558)
+2023-09-07T14:03:09.557 INFO 127.0.0.1 -> PUT /api/v1/focuser/0/connected
+2023-09-07T14:03:09.557 INFO 127.0.0.1 -> {'ClientTransactionID': '1', 'ClientID': '59524', 'Connected': 'True'}
+2023-09-07T14:03:10.580 INFO [connected]
+2023-09-07T14:03:10.596 INFO 127.0.0.1 -> GET /api/v1/focuser/0/name?ClientTransactionID=2&ClientID=59524
+2023-09-07T14:03:10.596 INFO 127.0.0.1 <- LNA Focuser
+2023-09-07T14:03:10.612 INFO 127.0.0.1 -> GET /api/v1/focuser/0/description?ClientTransactionID=3&ClientID=59524
+2023-09-07T14:03:10.612 INFO 127.0.0.1 <- Focuser Driver for Perkin-Elmer Focuser
+2023-09-07T14:03:10.614 INFO 127.0.0.1 -> GET /api/v1/focuser/0/position?ClientTransactionID=4&ClientID=59524
+2023-09-07T14:03:11.689 ERROR Error reading position: invalid literal for int() with base 10: ''
+2023-09-07T14:03:11.762 INFO 127.0.0.1 <- 0
+2023-09-07T14:03:11.765 INFO 127.0.0.1 -> GET /api/v1/focuser/0/position?ClientTransactionID=5&ClientID=59524
+2023-09-07T14:03:11.824 INFO 127.0.0.1 <- 0
+2023-09-07T14:03:11.848 INFO 127.0.0.1 -> PUT /api/v1/focuser/0/move
+2023-09-07T14:03:11.848 INFO 127.0.0.1 -> {'ClientTransactionID': '6', 'ClientID': '59524', 'Position': '500'}
+2023-09-07T14:03:11.940 INFO 127.0.0.1 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=7&ClientID=59524
+2023-09-07T14:03:12.008 INFO 127.0.0.1 <- 1
+2023-09-07T14:03:12.033 INFO 127.0.0.1 -> GET /api/v1/focuser/0/position?ClientTransactionID=8&ClientID=59524
+2023-09-07T14:03:12.106 INFO 127.0.0.1 <- 5
+2023-09-07T14:03:12.632 INFO 127.0.0.1 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=9&ClientID=59524
+2023-09-07T14:03:12.700 INFO 127.0.0.1 <- 1
+2023-09-07T14:03:12.725 INFO 127.0.0.1 -> GET /api/v1/focuser/0/position?ClientTransactionID=10&ClientID=59524
+2023-09-07T14:03:12.798 INFO 127.0.0.1 <- 51
+2023-09-07T14:03:13.309 INFO 127.0.0.1 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=11&ClientID=59524
+2023-09-07T14:03:13.376 INFO 127.0.0.1 <- 1
+2023-09-07T14:03:13.400 INFO 127.0.0.1 -> GET /api/v1/focuser/0/position?ClientTransactionID=12&ClientID=59524
+2023-09-07T14:03:13.470 INFO 127.0.0.1 <- 143
+2023-09-07T14:03:13.998 INFO 127.0.0.1 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=13&ClientID=59524
+2023-09-07T14:03:14.068 INFO 127.0.0.1 <- 1
+2023-09-07T14:03:14.093 INFO 127.0.0.1 -> GET /api/v1/focuser/0/position?ClientTransactionID=14&ClientID=59524
+2023-09-07T14:03:14.167 INFO 127.0.0.1 <- 282
+2023-09-07T14:03:14.688 INFO 127.0.0.1 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=15&ClientID=59524
+2023-09-07T14:03:14.756 INFO 127.0.0.1 <- 1
+2023-09-07T14:03:14.781 INFO 127.0.0.1 -> GET /api/v1/focuser/0/position?ClientTransactionID=16&ClientID=59524
+2023-09-07T14:03:14.855 INFO 127.0.0.1 <- 402
+2023-09-07T14:03:15.363 INFO 127.0.0.1 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=17&ClientID=59524
+2023-09-07T14:03:15.432 INFO 127.0.0.1 <- 1
+2023-09-07T14:03:15.456 INFO 127.0.0.1 -> GET /api/v1/focuser/0/position?ClientTransactionID=18&ClientID=59524
+2023-09-07T14:03:15.530 INFO 127.0.0.1 <- 474
+2023-09-07T14:03:16.040 INFO 127.0.0.1 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=19&ClientID=59524
+2023-09-07T14:03:16.108 INFO 127.0.0.1 <- 1
+2023-09-07T14:03:16.133 INFO 127.0.0.1 -> GET /api/v1/focuser/0/position?ClientTransactionID=20&ClientID=59524
+2023-09-07T14:03:16.206 INFO 127.0.0.1 <- 500
+2023-09-07T14:03:16.729 INFO 127.0.0.1 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=21&ClientID=59524
+2023-09-07T14:03:16.796 INFO 127.0.0.1 <- 0
+2023-09-07T14:03:16.798 INFO 127.0.0.1 -> GET /api/v1/focuser/0/position?ClientTransactionID=22&ClientID=59524
+2023-09-07T14:03:16.862 INFO 127.0.0.1 <- 500
+2023-09-07T14:03:17.382 INFO 127.0.0.1 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=23&ClientID=59524
+2023-09-07T14:03:17.451 INFO 127.0.0.1 <- 0
+2023-09-07T14:03:17.476 INFO 127.0.0.1 -> GET /api/v1/focuser/0/position?ClientTransactionID=24&ClientID=59524
+2023-09-07T14:03:17.550 INFO 127.0.0.1 <- 500
+2023-09-07T14:03:18.059 INFO 127.0.0.1 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=25&ClientID=59524
+2023-09-07T14:03:18.127 INFO 127.0.0.1 <- 0
+2023-09-07T14:03:18.129 INFO 127.0.0.1 -> GET /api/v1/focuser/0/position?ClientTransactionID=26&ClientID=59524
+2023-09-07T14:03:18.193 INFO 127.0.0.1 <- 500
+2023-09-07T14:03:18.711 INFO 127.0.0.1 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=27&ClientID=59524
+2023-09-07T14:03:18.778 INFO 127.0.0.1 <- 0
+2023-09-07T14:03:18.802 INFO 127.0.0.1 -> GET /api/v1/focuser/0/position?ClientTransactionID=28&ClientID=59524
+2023-09-07T14:03:18.876 INFO 127.0.0.1 <- 500
+2023-09-07T14:03:19.399 INFO 127.0.0.1 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=29&ClientID=59524
+2023-09-07T14:03:19.471 INFO 127.0.0.1 <- 0
+2023-09-07T14:03:19.475 INFO 127.0.0.1 -> GET /api/v1/focuser/0/position?ClientTransactionID=30&ClientID=59524
+2023-09-07T14:03:19.548 INFO 127.0.0.1 <- 500
+2023-09-07T14:03:20.055 INFO 127.0.0.1 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=31&ClientID=59524
+2023-09-07T14:03:20.126 INFO 127.0.0.1 <- 0
+2023-09-07T14:03:20.149 INFO 127.0.0.1 -> GET /api/v1/focuser/0/position?ClientTransactionID=32&ClientID=59524
+2023-09-07T14:03:20.220 INFO 127.0.0.1 <- 500
+2023-09-07T14:03:20.744 INFO 127.0.0.1 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=33&ClientID=59524
+2023-09-07T14:03:20.814 INFO 127.0.0.1 <- 0
+2023-09-07T14:03:20.838 INFO 127.0.0.1 -> GET /api/v1/focuser/0/position?ClientTransactionID=34&ClientID=59524
+2023-09-07T14:03:20.908 INFO 127.0.0.1 <- 500
+2023-09-07T14:03:21.430 INFO 127.0.0.1 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=35&ClientID=59524
+2023-09-07T14:03:21.498 INFO 127.0.0.1 <- 0
+2023-09-07T14:03:21.500 INFO 127.0.0.1 -> GET /api/v1/focuser/0/position?ClientTransactionID=36&ClientID=59524
+2023-09-07T14:03:21.564 INFO 127.0.0.1 <- 500
+2023-09-07T14:03:22.086 INFO 127.0.0.1 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=37&ClientID=59524
+2023-09-07T14:03:22.157 INFO 127.0.0.1 <- 0
+2023-09-07T14:03:22.181 INFO 127.0.0.1 -> GET /api/v1/focuser/0/position?ClientTransactionID=38&ClientID=59524
+2023-09-07T14:03:22.252 INFO 127.0.0.1 <- 500
+2023-09-07T14:03:22.773 INFO 127.0.0.1 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=39&ClientID=59524
+2023-09-07T14:03:22.841 INFO 127.0.0.1 <- 0
+2023-09-07T14:03:22.867 INFO 127.0.0.1 -> GET /api/v1/focuser/0/position?ClientTransactionID=40&ClientID=59524
+2023-09-07T14:03:22.940 INFO 127.0.0.1 <- 500
+2023-09-07T14:03:23.445 INFO 127.0.0.1 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=41&ClientID=59524
+2023-09-07T14:03:23.513 INFO 127.0.0.1 <- 0
+2023-09-07T14:03:23.515 INFO 127.0.0.1 -> GET /api/v1/focuser/0/position?ClientTransactionID=42&ClientID=59524
+2023-09-07T14:03:23.579 INFO 127.0.0.1 <- 500
+2023-09-07T14:03:24.098 INFO 127.0.0.1 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=43&ClientID=59524
+2023-09-07T14:03:24.168 INFO 127.0.0.1 <- 0
+2023-09-07T14:03:24.192 INFO 127.0.0.1 -> GET /api/v1/focuser/0/position?ClientTransactionID=44&ClientID=59524
+2023-09-07T14:03:24.263 INFO 127.0.0.1 <- 500
+2023-09-07T14:03:24.772 INFO 127.0.0.1 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=45&ClientID=59524
+2023-09-07T14:03:24.840 INFO 127.0.0.1 <- 0
+2023-09-07T14:03:24.863 INFO 127.0.0.1 -> GET /api/v1/focuser/0/position?ClientTransactionID=46&ClientID=59524
+2023-09-07T14:03:24.934 INFO 127.0.0.1 <- 500
+2023-09-07T14:03:25.444 INFO 127.0.0.1 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=47&ClientID=59524
+2023-09-07T14:03:25.511 INFO 127.0.0.1 <- 0
+2023-09-07T14:03:25.514 INFO 127.0.0.1 -> GET /api/v1/focuser/0/position?ClientTransactionID=48&ClientID=59524
+2023-09-07T14:03:25.577 INFO 127.0.0.1 <- 500
+2023-09-07T14:03:26.087 INFO 127.0.0.1 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=49&ClientID=59524
+2023-09-07T14:03:26.155 INFO 127.0.0.1 <- 0
+2023-09-07T14:03:26.180 INFO 127.0.0.1 -> GET /api/v1/focuser/0/position?ClientTransactionID=50&ClientID=59524
+2023-09-07T14:03:26.254 INFO 127.0.0.1 <- 500
+2023-09-07T14:03:26.761 INFO 127.0.0.1 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=51&ClientID=59524
+2023-09-07T14:03:26.827 INFO 127.0.0.1 <- 0
+2023-09-07T14:03:26.829 INFO 127.0.0.1 -> GET /api/v1/focuser/0/position?ClientTransactionID=52&ClientID=59524
+2023-09-07T14:03:26.893 INFO 127.0.0.1 <- 500
+2023-09-07T14:03:27.400 INFO 127.0.0.1 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=53&ClientID=59524
+2023-09-07T14:03:27.470 INFO 127.0.0.1 <- 0
+2023-09-07T14:03:27.494 INFO 127.0.0.1 -> GET /api/v1/focuser/0/position?ClientTransactionID=54&ClientID=59524
+2023-09-07T14:03:27.564 INFO 127.0.0.1 <- 500
+2023-09-07T14:03:28.071 INFO 127.0.0.1 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=55&ClientID=59524
+2023-09-07T14:03:28.141 INFO 127.0.0.1 <- 0
+2023-09-07T14:03:28.144 INFO 127.0.0.1 -> GET /api/v1/focuser/0/position?ClientTransactionID=56&ClientID=59524
+2023-09-07T14:03:28.207 INFO 127.0.0.1 <- 500
+2023-09-07T14:03:28.725 INFO 127.0.0.1 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=57&ClientID=59524
+2023-09-07T14:03:28.796 INFO 127.0.0.1 <- 0
+2023-09-07T14:03:28.819 INFO 127.0.0.1 -> GET /api/v1/focuser/0/position?ClientTransactionID=58&ClientID=59524
+2023-09-07T14:03:28.891 INFO 127.0.0.1 <- 500
+2023-09-07T14:03:29.413 INFO 127.0.0.1 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=59&ClientID=59524
+2023-09-07T14:03:29.481 INFO 127.0.0.1 <- 0
+2023-09-07T14:03:29.506 INFO 127.0.0.1 -> GET /api/v1/focuser/0/position?ClientTransactionID=60&ClientID=59524
+2023-09-07T14:03:29.579 INFO 127.0.0.1 <- 500
+2023-09-07T14:03:30.103 INFO 127.0.0.1 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=61&ClientID=59524
+2023-09-07T14:03:30.173 INFO 127.0.0.1 <- 0
+2023-09-07T14:03:30.198 INFO 127.0.0.1 -> GET /api/v1/focuser/0/position?ClientTransactionID=62&ClientID=59524
+2023-09-07T14:03:30.271 INFO 127.0.0.1 <- 500
+2023-09-07T14:03:30.773 INFO 127.0.0.1 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=63&ClientID=59524
+2023-09-07T14:03:30.841 INFO 127.0.0.1 <- 0
+2023-09-07T14:03:30.843 INFO 127.0.0.1 -> GET /api/v1/focuser/0/position?ClientTransactionID=64&ClientID=59524
+2023-09-07T14:03:30.906 INFO 127.0.0.1 <- 500
+2023-09-07T14:03:31.415 INFO 127.0.0.1 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=65&ClientID=59524
+2023-09-07T14:03:31.483 INFO 127.0.0.1 <- 0
+2023-09-07T14:03:31.508 INFO 127.0.0.1 -> GET /api/v1/focuser/0/position?ClientTransactionID=66&ClientID=59524
+2023-09-07T14:03:31.582 INFO 127.0.0.1 <- 500
+2023-09-07T14:03:32.088 INFO 127.0.0.1 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=67&ClientID=59524
+2023-09-07T14:03:32.156 INFO 127.0.0.1 <- 0
+2023-09-07T14:03:32.181 INFO 127.0.0.1 -> GET /api/v1/focuser/0/position?ClientTransactionID=68&ClientID=59524
+2023-09-07T14:03:32.253 INFO 127.0.0.1 <- 500
+2023-09-07T14:03:32.782 INFO 127.0.0.1 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=69&ClientID=59524
+2023-09-07T14:03:32.852 INFO 127.0.0.1 <- 0
+2023-09-07T14:03:32.853 INFO 127.0.0.1 -> GET /api/v1/focuser/0/position?ClientTransactionID=70&ClientID=59524
+2023-09-07T14:03:32.917 INFO 127.0.0.1 <- 500
+2023-09-07T14:03:33.445 INFO 127.0.0.1 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=71&ClientID=59524
+2023-09-07T14:03:33.515 INFO 127.0.0.1 <- 0
+2023-09-07T14:03:33.540 INFO 127.0.0.1 -> GET /api/v1/focuser/0/position?ClientTransactionID=72&ClientID=59524
+2023-09-07T14:03:33.610 INFO 127.0.0.1 <- 500
+2023-09-07T14:03:34.133 INFO 127.0.0.1 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=73&ClientID=59524
+2023-09-07T14:03:34.203 INFO 127.0.0.1 <- 0
+2023-09-07T14:03:34.227 INFO 127.0.0.1 -> GET /api/v1/focuser/0/position?ClientTransactionID=74&ClientID=59524
+2023-09-07T14:03:34.297 INFO 127.0.0.1 <- 500
+2023-09-07T14:03:34.807 INFO 127.0.0.1 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=75&ClientID=59524
+2023-09-07T14:03:34.875 INFO 127.0.0.1 <- 0
+2023-09-07T14:03:34.899 INFO 127.0.0.1 -> GET /api/v1/focuser/0/position?ClientTransactionID=76&ClientID=59524
+2023-09-07T14:03:34.969 INFO 127.0.0.1 <- 500
+2023-09-07T14:03:35.478 INFO 127.0.0.1 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=77&ClientID=59524
+2023-09-07T14:03:35.546 INFO 127.0.0.1 <- 0
+2023-09-07T14:03:35.570 INFO 127.0.0.1 -> GET /api/v1/focuser/0/position?ClientTransactionID=78&ClientID=59524
+2023-09-07T14:03:35.641 INFO 127.0.0.1 <- 500
+2023-09-07T14:03:36.146 INFO 127.0.0.1 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=79&ClientID=59524
+2023-09-07T14:03:36.214 INFO 127.0.0.1 <- 0
+2023-09-07T14:03:36.239 INFO 127.0.0.1 -> GET /api/v1/focuser/0/position?ClientTransactionID=80&ClientID=59524
+2023-09-07T14:03:36.313 INFO 127.0.0.1 <- 500
+2023-09-07T14:03:36.831 INFO 127.0.0.1 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=81&ClientID=59524
+2023-09-07T14:03:36.902 INFO 127.0.0.1 <- 0
+2023-09-07T14:03:36.925 INFO 127.0.0.1 -> GET /api/v1/focuser/0/position?ClientTransactionID=82&ClientID=59524
+2023-09-07T14:03:36.997 INFO 127.0.0.1 <- 500
+2023-09-07T14:03:37.521 INFO 127.0.0.1 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=83&ClientID=59524
+2023-09-07T14:03:37.590 INFO 127.0.0.1 <- 0
+2023-09-07T14:03:37.613 INFO 127.0.0.1 -> GET /api/v1/focuser/0/position?ClientTransactionID=84&ClientID=59524
+2023-09-07T14:03:37.685 INFO 127.0.0.1 <- 500
+2023-09-07T14:03:38.195 INFO 127.0.0.1 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=85&ClientID=59524
+2023-09-07T14:03:38.263 INFO 127.0.0.1 <- 0
+2023-09-07T14:03:38.286 INFO 127.0.0.1 -> GET /api/v1/focuser/0/position?ClientTransactionID=86&ClientID=59524
+2023-09-07T14:03:38.360 INFO 127.0.0.1 <- 500
+2023-09-07T14:03:38.883 INFO 127.0.0.1 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=87&ClientID=59524
+2023-09-07T14:03:38.955 INFO 127.0.0.1 <- 0
+2023-09-07T14:03:38.977 INFO 127.0.0.1 -> GET /api/v1/focuser/0/position?ClientTransactionID=88&ClientID=59524
+2023-09-07T14:03:39.049 INFO 127.0.0.1 <- 500
+2023-09-07T14:03:39.571 INFO 127.0.0.1 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=89&ClientID=59524
+2023-09-07T14:03:39.638 INFO 127.0.0.1 <- 0
+2023-09-07T14:03:39.641 INFO 127.0.0.1 -> GET /api/v1/focuser/0/position?ClientTransactionID=90&ClientID=59524
+2023-09-07T14:03:39.704 INFO 127.0.0.1 <- 500
+2023-09-07T14:03:40.225 INFO 127.0.0.1 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=91&ClientID=59524
+2023-09-07T14:03:40.294 INFO 127.0.0.1 <- 0
+2023-09-07T14:03:40.318 INFO 127.0.0.1 -> GET /api/v1/focuser/0/position?ClientTransactionID=92&ClientID=59524
+2023-09-07T14:03:40.388 INFO 127.0.0.1 <- 500
+2023-09-07T14:03:40.911 INFO 127.0.0.1 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=93&ClientID=59524
+2023-09-07T14:03:40.978 INFO 127.0.0.1 <- 0
+2023-09-07T14:03:41.003 INFO 127.0.0.1 -> GET /api/v1/focuser/0/position?ClientTransactionID=94&ClientID=59524
+2023-09-07T14:03:41.072 INFO 127.0.0.1 <- 500
+2023-09-07T14:03:41.598 INFO 127.0.0.1 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=95&ClientID=59524
+2023-09-07T14:03:41.670 INFO 127.0.0.1 <- 0
+2023-09-07T14:03:41.672 INFO 127.0.0.1 -> GET /api/v1/focuser/0/position?ClientTransactionID=96&ClientID=59524
+2023-09-07T14:03:41.732 INFO 127.0.0.1 <- 500
+2023-09-07T14:03:42.259 INFO 127.0.0.1 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=97&ClientID=59524
+2023-09-07T14:03:42.329 INFO 127.0.0.1 <- 0
+2023-09-07T14:03:42.351 INFO 127.0.0.1 -> GET /api/v1/focuser/0/position?ClientTransactionID=98&ClientID=59524
+2023-09-07T14:03:42.424 INFO 127.0.0.1 <- 500
+2023-09-07T14:03:42.945 INFO 127.0.0.1 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=99&ClientID=59524
+2023-09-07T14:03:43.017 INFO 127.0.0.1 <- 0
+2023-09-07T14:03:43.039 INFO 127.0.0.1 -> GET /api/v1/focuser/0/position?ClientTransactionID=100&ClientID=59524
+2023-09-07T14:03:43.112 INFO 127.0.0.1 <- 500
+2023-09-07T14:03:43.619 INFO 127.0.0.1 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=101&ClientID=59524
+2023-09-07T14:03:43.689 INFO 127.0.0.1 <- 0
+2023-09-07T14:03:43.711 INFO 127.0.0.1 -> GET /api/v1/focuser/0/position?ClientTransactionID=102&ClientID=59524
+2023-09-07T14:03:43.784 INFO 127.0.0.1 <- 500
+2023-09-07T14:03:44.314 INFO 127.0.0.1 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=103&ClientID=59524
+2023-09-07T14:03:44.385 INFO 127.0.0.1 <- 0
+2023-09-07T14:03:44.408 INFO 127.0.0.1 -> GET /api/v1/focuser/0/position?ClientTransactionID=104&ClientID=59524
+2023-09-07T14:03:44.479 INFO 127.0.0.1 <- 500
+2023-09-07T14:03:45.006 INFO 127.0.0.1 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=105&ClientID=59524
+2023-09-07T14:03:45.074 INFO 127.0.0.1 <- 0
+2023-09-07T14:03:45.076 INFO 127.0.0.1 -> GET /api/v1/focuser/0/position?ClientTransactionID=106&ClientID=59524
+2023-09-07T14:03:45.140 INFO 127.0.0.1 <- 500
+2023-09-07T14:03:45.660 INFO 127.0.0.1 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=107&ClientID=59524
+2023-09-07T14:03:45.733 INFO 127.0.0.1 <- 0
+2023-09-07T14:03:45.735 INFO 127.0.0.1 -> GET /api/v1/focuser/0/position?ClientTransactionID=108&ClientID=59524
+2023-09-07T14:03:45.795 INFO 127.0.0.1 <- 500
+2023-09-07T14:03:46.320 INFO 127.0.0.1 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=109&ClientID=59524
+2023-09-07T14:03:46.388 INFO 127.0.0.1 <- 0
+2023-09-07T14:03:46.413 INFO 127.0.0.1 -> GET /api/v1/focuser/0/position?ClientTransactionID=110&ClientID=59524
+2023-09-07T14:03:46.487 INFO 127.0.0.1 <- 500
+2023-09-07T14:03:46.996 INFO 127.0.0.1 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=111&ClientID=59524
+2023-09-07T14:03:47.064 INFO 127.0.0.1 <- 0
+2023-09-07T14:03:47.067 INFO 127.0.0.1 -> GET /api/v1/focuser/0/position?ClientTransactionID=112&ClientID=59524
+2023-09-07T14:03:47.126 INFO 127.0.0.1 <- 500
+2023-09-07T14:03:47.646 INFO 127.0.0.1 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=113&ClientID=59524
+2023-09-07T14:03:47.716 INFO 127.0.0.1 <- 0
+2023-09-07T14:03:47.718 INFO 127.0.0.1 -> GET /api/v1/focuser/0/position?ClientTransactionID=114&ClientID=59524
+2023-09-07T14:03:47.781 INFO 127.0.0.1 <- 500
+2023-09-07T14:03:48.305 INFO 127.0.0.1 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=115&ClientID=59524
+2023-09-07T14:03:48.374 INFO 127.0.0.1 <- 0
+2023-09-07T14:03:48.398 INFO 127.0.0.1 -> GET /api/v1/focuser/0/position?ClientTransactionID=116&ClientID=59524
+2023-09-07T14:03:48.470 INFO 127.0.0.1 <- 500
+2023-09-07T14:03:48.991 INFO 127.0.0.1 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=117&ClientID=59524
+2023-09-07T14:03:49.059 INFO 127.0.0.1 <- 0
+2023-09-07T14:03:49.084 INFO 127.0.0.1 -> GET /api/v1/focuser/0/position?ClientTransactionID=118&ClientID=59524
+2023-09-07T14:03:49.157 INFO 127.0.0.1 <- 500
+2023-09-07T14:03:49.680 INFO 127.0.0.1 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=119&ClientID=59524
+2023-09-07T14:03:49.747 INFO 127.0.0.1 <- 0
+2023-09-07T14:03:49.772 INFO 127.0.0.1 -> GET /api/v1/focuser/0/position?ClientTransactionID=120&ClientID=59524
+2023-09-07T14:03:49.846 INFO 127.0.0.1 <- 500
+2023-09-07T14:03:50.365 INFO 127.0.0.1 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=121&ClientID=59524
+2023-09-07T14:03:50.435 INFO 127.0.0.1 <- 0
+2023-09-07T14:03:50.439 INFO 127.0.0.1 -> GET /api/v1/focuser/0/position?ClientTransactionID=122&ClientID=59524
+2023-09-07T14:03:50.501 INFO 127.0.0.1 <- 500
+2023-09-07T14:03:51.023 INFO 127.0.0.1 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=123&ClientID=59524
+2023-09-07T14:03:51.095 INFO 127.0.0.1 <- 0
+2023-09-07T14:03:51.097 INFO 127.0.0.1 -> GET /api/v1/focuser/0/position?ClientTransactionID=124&ClientID=59524
+2023-09-07T14:03:51.160 INFO 127.0.0.1 <- 500
+2023-09-07T14:03:51.680 INFO 127.0.0.1 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=125&ClientID=59524
+2023-09-07T14:03:51.749 INFO 127.0.0.1 <- 0
+2023-09-07T14:03:51.772 INFO 127.0.0.1 -> GET /api/v1/focuser/0/position?ClientTransactionID=126&ClientID=59524
+2023-09-07T14:03:51.844 INFO 127.0.0.1 <- 500
+2023-09-07T14:03:52.368 INFO 127.0.0.1 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=127&ClientID=59524
+2023-09-07T14:03:52.437 INFO 127.0.0.1 <- 0
+2023-09-07T14:03:52.461 INFO 127.0.0.1 -> GET /api/v1/focuser/0/position?ClientTransactionID=128&ClientID=59524
+2023-09-07T14:03:52.536 INFO 127.0.0.1 <- 500
+2023-09-07T14:03:53.055 INFO 127.0.0.1 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=129&ClientID=59524
+2023-09-07T14:03:53.126 INFO 127.0.0.1 <- 0
+2023-09-07T14:03:53.129 INFO 127.0.0.1 -> GET /api/v1/focuser/0/position?ClientTransactionID=130&ClientID=59524
+2023-09-07T14:03:53.192 INFO 127.0.0.1 <- 500
+2023-09-07T14:03:53.713 INFO 127.0.0.1 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=131&ClientID=59524
+2023-09-07T14:03:53.781 INFO 127.0.0.1 <- 0
+2023-09-07T14:03:53.805 INFO 127.0.0.1 -> GET /api/v1/focuser/0/position?ClientTransactionID=132&ClientID=59524
+2023-09-07T14:03:53.876 INFO 127.0.0.1 <- 500
+2023-09-07T14:03:54.400 INFO 127.0.0.1 -> GET /api/v1/focuser/0/ismoving?ClientTransactionID=133&ClientID=59524
+2023-09-07T14:03:54.469 INFO 127.0.0.1 <- 0
+2023-09-07T14:03:54.493 INFO 127.0.0.1 -> PUT /api/v1/focuser/0/connected
+2023-09-07T14:03:54.493 INFO 127.0.0.1 -> {'ClientTransactionID': '133', 'ClientID': '59524', 'Connected': 'False'}
+2023-09-07T14:03:54.494 INFO [disconnected]

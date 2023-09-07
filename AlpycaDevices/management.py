@@ -87,13 +87,13 @@ class configureddevices():
             {
             'DeviceName'    : FocuserMetadata.Name,
             'DeviceType'    : FocuserMetadata.DeviceType,
-            'DeviceNumber'  : 0,
+            'DeviceNumber'  : 0, # gt zero for more instances of focuser
             'UniqueID'      : FocuserMetadata.DeviceID
             },
             {
             'DeviceName'    : RotatorMetadata.Name,
             'DeviceType'    : RotatorMetadata.DeviceType,
-            'DeviceNumber'  : 1,
+            'DeviceNumber'  : 0,
             'UniqueID'      : RotatorMetadata.DeviceID
             }
         ]

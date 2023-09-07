@@ -87,44 +87,44 @@ class Focuser():
                 raise RuntimeError('Cannot disconnect')
         self._lock.release()
     
-    # def start(self, from_run: bool = False) -> None:
-    #     print('[start]')
-    #     self._lock.acquire()
-    #     print('[start] got lock')
-    #     if from_run or self._stopped:
-    #         self._stopped = False
-    #         print('[start] new timer')
-    #         self._timer = Timer(self._interval, self._run)
-    #         print('[start] now start the timer')
-    #         self._timer.start()
-    #         print('[start] timer started')
-    #         self._lock.release()
-    #         print('[start] lock released')
-    #     else:
-    #         self._lock.release()
-    #         print('[start] lock released')
+    def start(self, from_run: bool = False) -> None:
+        print('[start]')
+        self._lock.acquire()
+        print('[start] got lock')
+        if from_run or self._stopped:
+            self._stopped = False
+            print('[start] new timer')
+            self._timer = Timer(self._interval, self._run)
+            print('[start] now start the timer')
+            self._timer.start()
+            print('[start] timer started')
+            self._lock.release()
+            print('[start] lock released')
+        else:
+            self._lock.release()
+            print('[start] lock released')
     
-    # def _run(self) -> None:
-    #     print('[_run] (tmr expired) get lock')
-    #     self.position
-    #     self._lock.acquire()
-    #     delta = self._tgt_position - self._position
-    #     self._lock.release()
-    #     print(f'[_run] final delta={str(delta)}')
-    #     if delta != 0:
-    #         self.position
-    #         self._lock.acquire()
-    #         self._is_moving = True
-    #         self._lock.release()
-    #     else:
-    #         self._lock.acquire()
-    #         self._is_moving = False
-    #         self._stopped = True
-    #         self._lock.release()
-    #     print('[_run] lock released')
-    #     if self._is_moving:
-    #         print('[_run] more motion needed, start another timer interval')
-    #         self.start(from_run = True)
+    def _run(self) -> None:
+        print('[_run] (tmr expired) get lock')
+        self.position
+        self._lock.acquire()
+        delta = self._tgt_position - self._position
+        self._lock.release()
+        print(f'[_run] final delta={str(delta)}')
+        if delta != 0:
+            self.position
+            self._lock.acquire()
+            self._is_moving = True
+            self._lock.release()
+        else:
+            self._lock.acquire()
+            self._is_moving = False
+            self._stopped = True
+            self._lock.release()
+        print('[_run] lock released')
+        if self._is_moving:
+            print('[_run] more motion needed, start another timer interval')
+            self.start(from_run = True)
     
     @property
     def temp(self):
@@ -183,7 +183,7 @@ class Focuser():
     @property
     def is_moving(self) -> bool:
         self._lock.acquire()
-        self._is_moving = self._write("R")
+        # self._is_moving = self._write("R\n")
         res = self._is_moving
         self._lock.release()
         self.logger.debug(f'[is_moving] {str(res)}')
@@ -242,7 +242,7 @@ class Focuser():
         self._is_moving = bool(resp) 
         print('[move]', self._is_moving)
         self._lock.release() 
-        # self.start() 
+        self.start() 
 
     def stop(self) -> None:
         self._lock.acquire()
