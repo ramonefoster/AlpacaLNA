@@ -49,6 +49,7 @@ from logging import Logger
 # For each *type* of device served
 from focuser import FocuserMetadata
 from rotator import RotatorMetadata
+from dome import DomeMetadata
 
 logger: Logger = None
 #logger = None                   # Safe on Python 3.7 but no intellisense in VSCode etc.
@@ -95,6 +96,12 @@ class configureddevices():
             'DeviceType'    : RotatorMetadata.DeviceType,
             'DeviceNumber'  : 0,
             'UniqueID'      : RotatorMetadata.DeviceID
+            },
+            {
+            'DeviceName'    : DomeMetadata.Name,
+            'DeviceType'    : DomeMetadata.DeviceType,
+            'DeviceNumber'  : 0,
+            'UniqueID'      : DomeMetadata.DeviceID
             }
         ]
         

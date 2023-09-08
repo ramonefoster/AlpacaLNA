@@ -73,7 +73,7 @@ class RotatorDevice:
     #
     def __init__(self, logger: Logger):
         self._lock = Lock()
-        self.name: str = 'device'
+        self.name: str = 'Fake Rotator'
         self.logger = logger
         #
         # Rotator device constants

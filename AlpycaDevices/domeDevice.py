@@ -10,7 +10,7 @@ import time
 class Dome():
     def __init__(self, logger: Logger):  
         self._lock = Lock()
-        self.name: str = 'LNA Focuser'
+        self.name: str = 'LNA Dome'
         self.logger = logger
         
         self._altitude = 0.0
@@ -226,7 +226,7 @@ class Dome():
         res = self._slaved
         self._lock.release()
         return res
-    @property.setter
+    @slaved.setter
     def slaved(self, slave: bool):
         if slave:
             raise RuntimeError("Not implemented")
@@ -256,7 +256,7 @@ class Dome():
         raise RuntimeError('Dome does not support Altitude Slew')
 
     def slew_to_azimuth(self, azimuth: float):
-        self.logger.debug(f'[Move] pos={str(azimuth)}')               
+        self.logger.debug(f'[Slew] pos={str(azimuth)}')               
         if self._slaved:
             raise RuntimeError('Slaved')
         if not self._can_set_az:

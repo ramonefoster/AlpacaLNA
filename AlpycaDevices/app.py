@@ -74,6 +74,7 @@ from shr import set_shr_logger
 #########################
 import focuser
 import rotator
+import dome
 
 #--------------
 API_VERSION = 1
@@ -217,18 +218,20 @@ def main():
     logger = log.init_logging()
     # Share this logger throughout
     log.logger = logger
-    exceptions.logger = logger
-    focuser.start_foc_device(logger)
+    exceptions.logger = logger    
     discovery.logger = logger
     set_shr_logger(logger)
 
+    focuser.start_foc_device(logger) #Idea to pass COM port when using UI
     rotator.start_rot_device(logger)
+    dome.start_dome_device(logger)
 
     #########################
     # FOR EACH ASCOM DEVICE #
     #########################
     focuser.logger = logger
     rotator.logger = logger
+    dome.logger = logger
 
     # -----------------------------
     # Last-Chance Exception Handler
@@ -253,6 +256,7 @@ def main():
     #########################
     init_routes(falc_app, 'focuser', focuser)
     init_routes(falc_app, 'rotator', rotator)
+    init_routes(falc_app, 'dome', dome)
     #
     # Initialize routes for Alpaca support endpoints
     falc_app.add_route('/management/apiversions', management.apiversions())
@@ -261,6 +265,7 @@ def main():
     falc_app.add_route('/setup', setup.svrsetup())
     falc_app.add_route(f'/setup/v{API_VERSION}/focuser/{{devnum}}/setup', setup.devsetup())
     falc_app.add_route(f'/setup/v{API_VERSION}/rotator/{{devnum}}/setup', setup.devsetup())
+    falc_app.add_route(f'/setup/v{API_VERSION}/dome/{{devnum}}/setup', setup.devsetup())
 
     #
     # Install the unhandled exception processor. See above,
