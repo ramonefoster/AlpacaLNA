@@ -58,10 +58,10 @@ class Dome():
     def connected(self, connected: bool):
         self._lock.acquire()
         self._connected = connected
-        if connected and 'COM3' in self._ports():
+        if connected and 'COM12' in self._ports():
             self._lock.release()
             self._serial = serial.Serial(
-                port='COM3',
+                port='COM12',
                 baudrate='9600',                
                 timeout=self._timeout
             )
@@ -90,25 +90,19 @@ class Dome():
                 raise RuntimeError('Cannot disconnect')
         self._lock.release()
     
-    def barcode_to_azimuth(self, stat_buf):
-        """converts barcode number to azimuth"""
-        if len(stat_buf)>20:                       
-            if not type(re.search(r'\d+', stat_buf[0:12])) == type(None):
-                dome_lcb = int(re.search(r'\d+', stat_buf[0:12]).group())
-            else:
-                dome_lcb = 851
-            if dome_lcb >= 801 and dome_lcb < 851:
-                return (dome_lcb - 670)*2
-            if dome_lcb >= 851 and dome_lcb <= 982:
-                return (dome_lcb - 851)*2
-        else:
-            return -1
+    def barcode_to_azimuth(self, dome_lcb):
+        if dome_lcb >= 801 and dome_lcb < 851:
+            return (dome_lcb - 670)*2
+        if dome_lcb >= 851 and dome_lcb <= 982:
+            return (dome_lcb - 851)*2
+
     
     def status(self):
         self._lock.acquire()
         ack = self._write("MEADE PROG STATUS\r")
         if '*' in ack:
-            self._azimuth = self.barcode_to_azimuth(ack) 
+            dome_lcb = int(re.search(r'\d+', ack[0:12]).group())
+            self._azimuth = self.barcode_to_azimuth(dome_lcb) 
             if self._home_az != self._azimuth:
                 self._at_home = False
             else:
@@ -119,9 +113,14 @@ class Dome():
                 self._shutter_status = 0
             elif shutter == 0:
                 self._shutter_status = 1
+        print("[AZ]: ", self._azimuth)
         self._lock.release()
     
     @property
+    def altitude(self) -> float:
+        return
+    
+    @altitude.setter
     def altitude(self) -> float:
         self._lock.acquire()
         if not self._can_set_alt:
@@ -132,8 +131,9 @@ class Dome():
     
     @property
     def azimuth(self) -> float:
+        self.status()
         self._lock.acquire()
-        if not self._can_set_az:
+        if not self._can_set_az:            
             self._lock.release()
             raise RuntimeError("Does not support vertical (altitude) control ")
         if self._azimuth == -1:
@@ -143,7 +143,8 @@ class Dome():
     
     @property
     def at_home(self) -> bool:
-        self._lock.acquire()
+        self.status()
+        self._lock.acquire()        
         res = self._at_home
         self._lock.release()
         return res
@@ -213,7 +214,7 @@ class Dome():
         return res
     
     @property
-    def slewing(self)-> bool:
+    def slewing(self):
         self.status()
         self._lock.acquire()
         res = self._slewing
@@ -221,7 +222,7 @@ class Dome():
         return res
     
     @property
-    def slaved(self)-> bool:
+    def slaved(self):
         self._lock.acquire()
         res = self._slaved
         self._lock.release()
@@ -231,18 +232,8 @@ class Dome():
         if slave:
             raise RuntimeError("Not implemented")
     
-    @property
     def at_park(self) -> bool:
-        raise RuntimeError("Does does not support parking")
-    
-    def sync_to_az(self, az: float) -> None:
-        raise RuntimeError('Shutter does not support azimuth synchronization')
-    
-    def set_park(self) -> None:
-        raise RuntimeError('Dome does not support the setting of the park position')
-    
-    def park(self) -> None:
-        raise RuntimeError('Dome does not support park')
+        return False  
     
     def find_home(self) -> None:
         self.abort()
@@ -263,10 +254,12 @@ class Dome():
             raise RuntimeError('Dome does not support rotational (azimuth) control')
         
         azimuth = float(azimuth)
+        if azimuth == 360:
+            azimuth = 0
         if azimuth >= 0 and azimuth < 250:
-            tag = 857 + math.ceil((azimuth) / 2)  
+            tag = 851 + math.ceil((azimuth) / 2)  
         elif azimuth >= 250 and azimuth < 360:
-            tag = 676 + math.ceil((azimuth) / 2)
+            tag = 670 + math.ceil((azimuth) / 2)
 
         self._slewing = 'ACK' in self._write("MEADE DOMO MOVER = " + str(tag) + "\r")
         self._lock.acquire()

@@ -108,6 +108,33 @@ class SupportedActions():
         resp.text = PropertyResponse([], req).json  # Not PropertyNotImplemented
 
 @before(PreProcessRequest(maxdev))
+class connected:
+    """Retrieves or sets the connected state of the device
+
+    * Set True to connect to the device hardware. Set False to disconnect
+      from the device hardware. Client can also read the property to check
+      whether it is connected. This reports the current hardware state.
+    * Multiple calls setting Connected to true or false must not cause
+      an error.
+
+    """
+    def on_get(self, req: Request, resp: Response, devnum: int):
+        resp.text = PropertyResponse(dome.connected, req).json
+
+    def on_put(self, req: Request, resp: Response, devnum: int):
+        conn_str = get_request_field('Connected', req)
+        conn = to_bool(conn_str)              # Raises 400 Bad Request if str to bool fails
+
+        try:
+            # ----------------------
+            dome.connected = conn
+            # ----------------------
+            resp.text = MethodResponse(req).json
+        except Exception as ex:
+            resp.text = MethodResponse(req, # Put is actually like a method :-(
+                            DriverException(0x500, f'{self.__class__.__name__} failed', ex)).json
+
+@before(PreProcessRequest(maxdev))
 class altitude:
     def on_get(self, req: Request, resp: Response, devnum: int):
         if not dome.connected:
@@ -118,7 +145,8 @@ class altitude:
             # ----------------------
             val = dome.altitude
             # ----------------------
-            resp.text = PropertyResponse(val, req).json
+            resp.text = PropertyResponse(None, req,
+                            NotImplementedException()).json
         except Exception as ex:
             resp.text = PropertyResponse(None, req,
                             DriverException(0x500, 'Dome.Altitude failed', ex)).json
@@ -150,7 +178,8 @@ class atpark:
             # ----------------------
             val = dome.at_park
             # ----------------------
-            resp.text = PropertyResponse(val, req).json
+            resp.text = PropertyResponse(None, req,
+                            NotImplementedException()).json
         except Exception as ex:
             resp.text = PropertyResponse(None, req,
                             DriverException(0x500, 'Dome.Atpark failed', ex)).json
@@ -341,9 +370,10 @@ class slaved:
 
         try:
             # -----------------------------
-            dome.slaved(slaved)
+            # dome.slaved(slaved)
             # -----------------------------
-            resp.text = MethodResponse(req).json
+            resp.text = PropertyResponse(None, req,
+                            NotImplementedException()).json
         except Exception as ex:
             resp.text = MethodResponse(req,
                             DriverException(0x500, 'Dome.Slaved failed', ex)).json
@@ -437,9 +467,10 @@ class park:
             return
         try:
             # -----------------------------
-            dome.park()
+            # dome.park()
             # -----------------------------
-            resp.text = MethodResponse(req).json
+            resp.text = PropertyResponse(None, req,
+                            NotImplementedException()).json
         except Exception as ex:
             resp.text = MethodResponse(req,
                             DriverException(0x500, 'Dome.Park failed', ex)).json
@@ -453,9 +484,10 @@ class setpark:
             return
         try:
             # -----------------------------
-            dome.set_park()
+            # dome.set_park()
             # -----------------------------
-            resp.text = MethodResponse(req).json
+            resp.text = PropertyResponse(None, req,
+                            NotImplementedException()).json
         except Exception as ex:
             resp.text = MethodResponse(req,
                             DriverException(0x500, 'Dome.Setpark failed', ex)).json
@@ -477,9 +509,10 @@ class slewtoaltitude:
         ### RANGE CHECK AS NEEDED ###       # Raise Alpaca InvalidValueException with details!
         try:
             # -----------------------------
-            dome.slew_to_altitude(altitude)
+            # dome.slew_to_altitude(altitude)
             # -----------------------------
-            resp.text = MethodResponse(req).json
+            resp.text = PropertyResponse(None, req,
+                            NotImplementedException()).json
         except Exception as ex:
             resp.text = MethodResponse(req,
                             DriverException(0x500, 'Dome.Slewtoaltitude failed', ex)).json
@@ -493,7 +526,7 @@ class slewtoazimuth:
             return
         azimuthstr = get_request_field('Azimuth', req)      # Raises 400 bad request if missing
         try:
-            azimuth = int(azimuthstr)
+            azimuth = float(azimuthstr)
         except:
             resp.text = MethodResponse(req,
                             InvalidValueException(f'Azimuth " + azimuthstr + " not a valid number.')).json
@@ -501,6 +534,10 @@ class slewtoazimuth:
         ### RANGE CHECK AS NEEDED ###       # Raise Alpaca InvalidValueException with details!
         try:
             # -----------------------------
+            if azimuth < 0 or azimuth> 360:
+                resp.text = MethodResponse(req,
+                            InvalidValueException(f'Azimuth " + azimuthstr + " not a valid number.')).json
+                return
             dome.slew_to_azimuth(azimuth)
             # -----------------------------
             resp.text = MethodResponse(req).json
@@ -525,9 +562,10 @@ class synctoazimuth:
         ### RANGE CHECK AS NEEDED ###       # Raise Alpaca InvalidValueException with details!
         try:
             # -----------------------------
-            dome.sync_to_az(azimuth)
+            # dome.sync_to_az(azimuth)
             # -----------------------------
-            resp.text = MethodResponse(req).json
+            resp.text = PropertyResponse(None, req,
+                            NotImplementedException()).json
         except Exception as ex:
             resp.text = MethodResponse(req,
                             DriverException(0x500, 'Dome.Synctoazimuth failed', ex)).json
