@@ -101,7 +101,10 @@ class Dome():
         self._lock.acquire()
         ack = self._write("MEADE PROG STATUS\r")
         if '*' in ack:
-            dome_lcb = int(re.search(r'\d+', ack[0:12]).group())
+            try:
+                dome_lcb = int(re.search(r'\d+', ack[0:12]).group())
+            except:
+                dome_lcb = 855
             self._azimuth = self.barcode_to_azimuth(dome_lcb) 
             if self._home_az != self._azimuth:
                 self._at_home = False
