@@ -6,6 +6,7 @@ from threading import Lock
 import re
 import math
 import time
+from config import Config
 
 class Dome():
     def __init__(self, logger: Logger):  
@@ -27,18 +28,20 @@ class Dome():
         self._slaved = False
         self._slewing = False
 
-        self._can_find_home = True
-        self._can_park = False
-        self._can_set_alt = False
-        self._can_set_az = True
-        self._can_set_park = False
-        self._can_set_shutter = True
-        self._can_slave = False
-        self._can_sync = False
+        self._can_find_home = Config.can_find_home
+        self._can_park = Config.can_park
+        self._can_set_alt = Config.can_set_alt
+        self._can_set_az = Config.can_set_az
+        self._can_set_park = Config.can_set_park
+        self._can_set_shutter = Config.can_set_shutter
+        self._can_slave = Config.can_slave
+        self._can_sync = Config.can_sync
 
         self._connected = False
         self._serial = None
-        self._timeout = 1
+        self._timeout = 2
+        self._port = Config.com_port
+        self._baudrate = Config.com_baudrate
     
     def _ports(self):
         self.list = serial.tools.list_ports.comports()
@@ -58,11 +61,11 @@ class Dome():
     def connected(self, connected: bool):
         self._lock.acquire()
         self._connected = connected
-        if connected and 'COM12' in self._ports():
+        if connected and self._port in self._ports():
             self._lock.release()
             self._serial = serial.Serial(
-                port='COM12',
-                baudrate='9600',                
+                port=self._port,
+                baudrate=self._baudrate,                
                 timeout=self._timeout
             )
             self._serial.close()
@@ -95,7 +98,6 @@ class Dome():
             return (dome_lcb - 670)*2
         if dome_lcb >= 851 and dome_lcb <= 982:
             return (dome_lcb - 851)*2
-
     
     def status(self):
         self._lock.acquire()
@@ -116,7 +118,6 @@ class Dome():
                 self._shutter_status = 0
             elif shutter == 0:
                 self._shutter_status = 1
-        print("[AZ]: ", self._azimuth)
         self._lock.release()
     
     @property

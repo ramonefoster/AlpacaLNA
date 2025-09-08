@@ -73,6 +73,8 @@ class Config:
     can_reverse: bool = get_toml('device', 'can_reverse')
     step_size: float = get_toml('device', 'step_size')
     steps_per_sec: int = get_toml('device', 'steps_per_sec')
+    com_port: str = get_toml('device', 'port')
+    com_baudrate: int = get_toml('device', 'baudrate')
     # ---------------
     # Logging Section
     # ---------------

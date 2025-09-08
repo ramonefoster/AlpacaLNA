@@ -12,6 +12,16 @@ verbose_driver_exceptions = true
 can_reverse = true
 step_size = 1.0
 steps_per_sec = 6
+com_port = 'COM12'
+baudrate = 9600
+can_find_home = true
+can_park = false
+can_set_alt = false
+can_set_az = true
+can_set_park = false
+can_set_shutter = true
+can_slave = false
+can_sync = false
 
 [logging]
 log_level = 'INFO'
