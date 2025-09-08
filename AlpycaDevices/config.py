@@ -73,8 +73,16 @@ class Config:
     can_reverse: bool = get_toml('device', 'can_reverse')
     step_size: float = get_toml('device', 'step_size')
     steps_per_sec: int = get_toml('device', 'steps_per_sec')
-    com_port: str = get_toml('device', 'port')
+    com_port: str = get_toml('device', 'com_port')
     com_baudrate: int = get_toml('device', 'baudrate')
+    can_find_home: bool = get_toml('device', 'can_find_home')
+    can_park: bool = get_toml('device', 'can_park')
+    can_set_alt: bool = get_toml('device', 'can_set_alt')
+    can_set_az: bool = get_toml('device', 'can_set_az')
+    can_set_park: bool = get_toml('device', 'can_set_park')
+    can_set_shutter: bool = get_toml('device', 'can_set_shutter')
+    can_slave: bool = get_toml('device', 'can_slave')
+    can_sync: bool = get_toml('device', 'can_sync')
     # ---------------
     # Logging Section
     # ---------------
