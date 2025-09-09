@@ -94,10 +94,10 @@ class Dome():
         self._lock.release()
     
     def barcode_to_azimuth(self, dome_lcb):
-        if dome_lcb >= 801 and dome_lcb < 851:
-            return (dome_lcb - 670)*2
-        if dome_lcb >= 851 and dome_lcb <= 982:
-            return (dome_lcb - 851)*2
+        if dome_lcb >= 855 and dome_lcb <= 982:
+            return 2 * (dome_lcb - 855)
+        elif dome_lcb < 855:
+            return 2 * (dome_lcb - 675)
     
     def status(self):
         self._lock.acquire()
@@ -260,10 +260,10 @@ class Dome():
         azimuth = float(azimuth)
         if azimuth == 360:
             azimuth = 0
-        if azimuth >= 0 and azimuth < 250:
-            tag = 851 + math.ceil((azimuth) / 2)  
-        elif azimuth >= 250 and azimuth < 360:
-            tag = 670 + math.ceil((azimuth) / 2)
+        if azimuth >= 0 and azimuth < 252:
+            tag = 855 + math.ceil((azimuth) / 2)  
+        elif azimuth >= 252 and azimuth < 360:
+            tag = 675 + math.ceil((azimuth) / 2)
 
         self._slewing = 'ACK' in self._write("MEADE DOMO MOVER = " + str(tag) + "\r")
         self._lock.acquire()
