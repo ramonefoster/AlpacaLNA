@@ -371,9 +371,8 @@ class slaved:
         try:
             # -----------------------------
             dome.slaved(slaved)
-            resp.text = MethodResponse(req).json
             # -----------------------------
-            
+            resp.text = MethodResponse(req).json
         except Exception as ex:
             resp.text = MethodResponse(req,
                             DriverException(0x500, 'Dome.Slaved failed', ex)).json
@@ -562,9 +561,10 @@ class synctoazimuth:
         ### RANGE CHECK AS NEEDED ###       # Raise Alpaca InvalidValueException with details!
         try:
             # -----------------------------
-            dome.slew_to_azimuth(azimuth)
+            # dome.slew_to_azimuth(azimuth)
             # -----------------------------
-            resp.text = MethodResponse(req).json
+            resp.text = PropertyResponse(None, req,
+                            NotImplementedException()).json
         except Exception as ex:
             resp.text = MethodResponse(req,
                             DriverException(0x500, 'Dome.Synctoazimuth failed', ex)).json
