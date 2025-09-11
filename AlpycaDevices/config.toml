@@ -20,8 +20,8 @@ can_set_alt = false
 can_set_az = true
 can_set_park = false
 can_set_shutter = true
-can_slave = false
-can_sync = false
+can_slave = true
+can_sync = true
 
 [logging]
 log_level = 'INFO'

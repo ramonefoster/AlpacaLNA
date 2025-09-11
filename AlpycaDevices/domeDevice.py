@@ -80,6 +80,7 @@ class Dome():
             self._lock.release()
             self.disconnect()
         if self._connected:
+            self._write("MEADE DOMO INIT\r")
             self.logger.info('[connected]')
         else:
             self.logger.info('[disconnected]')
@@ -233,8 +234,8 @@ class Dome():
         return res
     @slaved.setter
     def slaved(self, slave: bool):
-        if slave:
-            raise RuntimeError("Not implemented")
+        self._slaved = slave
+        return
     
     def at_park(self) -> bool:
         return False  
