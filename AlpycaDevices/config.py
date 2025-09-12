@@ -55,6 +55,16 @@ def get_toml(sect: str, item: str):
     else:
         return ''
 
+def save_toml(sect: str, item: str, value):
+    """Save a configuration item back to the config.toml file"""
+    global _dict
+    if not _dict is {}:
+        _dict[sect][item] = value
+        with open(f'{sys.path[0]}/config.toml', 'w') as toml_file:
+            toml.dump(_dict, toml_file)
+    else:
+        raise RuntimeError('Configuration dictionary not initialized')
+    
 class Config:
     """Device configuration in ``config.toml``"""
     # ---------------
@@ -83,6 +93,7 @@ class Config:
     can_set_shutter: bool = get_toml('device', 'can_set_shutter')
     can_slave: bool = get_toml('device', 'can_slave')
     can_sync: bool = get_toml('device', 'can_sync')
+    park_az: int = get_toml('device', 'park_az')
     # ---------------
     # Logging Section
     # ---------------

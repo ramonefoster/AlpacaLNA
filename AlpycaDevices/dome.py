@@ -466,10 +466,9 @@ class park:
             return
         try:
             # -----------------------------
-            # dome.park()
+            dome.park()
             # -----------------------------
-            resp.text = PropertyResponse(None, req,
-                            NotImplementedException()).json
+            resp.text = MethodResponse(req).json
         except Exception as ex:
             resp.text = MethodResponse(req,
                             DriverException(0x500, 'Dome.Park failed', ex)).json
@@ -483,10 +482,9 @@ class setpark:
             return
         try:
             # -----------------------------
-            # dome.set_park()
+            dome.set_park()
             # -----------------------------
-            resp.text = PropertyResponse(None, req,
-                            NotImplementedException()).json
+            resp.text = MethodResponse(req).json
         except Exception as ex:
             resp.text = MethodResponse(req,
                             DriverException(0x500, 'Dome.Setpark failed', ex)).json

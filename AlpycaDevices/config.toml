@@ -15,13 +15,14 @@ steps_per_sec = 6
 com_port = 'COM12'
 baudrate = 9600
 can_find_home = true
-can_park = false
+can_park = true
 can_set_alt = false
 can_set_az = true
-can_set_park = false
+can_set_park = true
 can_set_shutter = true
 can_slave = true
 can_sync = false
+park_az = 0
 
 [logging]
 log_level = 'INFO'

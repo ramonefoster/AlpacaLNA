@@ -6,7 +6,8 @@ from threading import Lock
 import re
 import math
 import time
-from config import Config
+from config import Config, save_toml
+from exceptions import *
 
 class Dome():
     def __init__(self, logger: Logger):  
@@ -20,6 +21,7 @@ class Dome():
         self._at_home = False
         self._shutter_status = 1
         self._home_az = 0 #degree
+        self._park_az = Config.park_az #degree
         # Status Shutter:       0 = "The shutter or roof is open", 
         #                       1 = "The shutter or roof is closed", 
         #                       2 = "The shutter or roof is opening", 
@@ -285,6 +287,26 @@ class Dome():
         self._shutter_status = 3
         self._lock.release()
     
+    def set_park(self):
+        if not self._can_set_park:
+            raise RuntimeError('Cannot set Park')
+        
+        save_toml('device', 'park_az', self._azimuth)
+        self.logger.info(f'[SetPark] pos={str(self._azimuth)}')
+
+    def park(self) -> None:
+        if not self._can_park:
+            raise RuntimeError('Cannot Park')
+        if self._slaved:
+            raise SlavedException()
+        if self._at_park:
+            raise ParkedException()
+
+        self._lock.acquire()
+        self._at_park = True
+        self._lock.release()
+        self.slew_to_azimuth(self._home_az)
+
     def open_shutter(self)-> None:
         if not self._can_set_shutter:
             raise RuntimeError('Cannot set Shutter')
@@ -299,10 +321,10 @@ class Dome():
         self._shutter_status = 2
         self._lock.release()
 
-
     def abort(self) -> None:        
         print('[AbortSlew] Aborting...')
         resp = 'ACK' in self._write("MEADE DOMO PARAR\r")
+        self._write("MEADE PROG PARAR\r")
         if not resp:
             resp = 'ACK' in self._write("MEADE DOMO PARAR\r")        
         if not resp:
