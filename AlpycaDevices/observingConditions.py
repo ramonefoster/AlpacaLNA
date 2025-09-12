@@ -158,7 +158,9 @@ class averageperiod:
     def on_put(self, req: Request, resp: Response, devnum: int):
         avg_str = get_request_field('AveragePeriod', req)
         avg = float(avg_str)              # Raises 400 Bad Request if str to bool fails
-
+        if avg < 0.0:
+            resp.text = MethodResponse(req, InvalidValueException(f'AveragePeriod {avg} < 0.0')).json
+            return
         try:
             # ----------------------
             obsC_dev.average_period = avg
@@ -197,14 +199,19 @@ class sensordescription:
     # def on_get(self, req: Request, resp: Response, devnum: int):
     #     resp.text = PropertyResponse(obsC_dev.average_period, req).json
 
-    def on_put(self, req: Request, resp: Response, devnum: int):
-        prop_name = get_request_field('PropertyName', req)
+    def on_get(self, req: Request, resp: Response, devnum: int):
+        prop_name = get_request_field('SensorName', req)
 
         try:
             # ----------------------
             desc = obsC_dev.sensor_description(prop_name)
+            if desc == 'Unknown sensor':
+                 resp.text = MethodResponse(req, InvalidValueException(), value=desc).json
+            elif desc == 'Not implemented':
+                resp.text = MethodResponse(req, NotImplementedException(), value=desc).json
             # ----------------------
-            resp.text = MethodResponse(req, value=desc).json
+            else:
+                resp.text = MethodResponse(req, value=desc).json
         except Exception as ex:
             resp.text = MethodResponse(req, # Put is actually like a method :-(
                             DriverException(0x500, f'{self.__class__.__name__} failed', ex)).json
@@ -464,17 +471,20 @@ class windspeed:
                             DriverException(0x500, f'{self.__class__.__name__} failed', ex)).json
             
 @before(PreProcessRequest(maxdev))
-class timesincelastupdate:
+class timesincelastupdate:            
     def on_get(self, req: Request, resp: Response, devnum: int):
+        prop_name = get_request_field('SensorName', req)
         if not obsC_dev.connected:
-            resp.text = PropertyResponse(None, req,
+            resp.text = resp.text = MethodResponse(req,
                             NotConnectedException()).json
-            return
-        try:
+        try:                
             # -------------------------------
-            val = obsC_dev.time_last_update
+            val = obsC_dev.time_last_update(prop_name)
+            if val < 0:
+                resp.text = MethodResponse(req, NotImplementedException(), value=val).json
+                return
             # -------------------------------
-            resp.text = PropertyResponse(val, req).json
+            resp.text = MethodResponse(req, value=val).json
         except Exception as ex:
-            resp.text = PropertyResponse(None, req,
+            resp.text = MethodResponse(req,
                             DriverException(0x500, f'{self.__class__.__name__} failed', ex)).json

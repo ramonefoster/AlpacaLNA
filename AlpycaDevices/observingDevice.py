@@ -7,6 +7,12 @@ import requests
 from config import Config
 from exceptions import *
 
+import warnings
+from urllib3.exceptions import InsecureRequestWarning
+
+# Suprime o warning específico
+warnings.filterwarnings("ignore", category=InsecureRequestWarning)
+
 class ObservingConditions():
     def __init__(self, logger: Logger):  
         self._lock = Lock()
@@ -65,8 +71,7 @@ class ObservingConditions():
 
     def refresh(self):
         "Forces the device to immediately query its attached hardware to refresh sensor values"
-        if self._connected:
-            self.get_status()
+        pass
 
     @property
     def connected(self):
@@ -120,10 +125,6 @@ class ObservingConditions():
     def sensor_description(self, sensor: str) -> str:
         "Description of the sensor providing the requested property"
         description = self._sensor_descriptions.get(sensor, 'Unknown sensor')
-        if description == 'Unknown sensor':
-            raise InvalidValueException()
-        elif description == 'Not implemented':
-            raise NotImplementedException()
         return description
     
     @property
@@ -213,6 +214,8 @@ class ObservingConditions():
         self._lock.release()
         return res
     
-    @property
-    def time_last_update(self, item) -> float:
+    def time_last_update(self, sensor) -> float:
+        description = self._sensor_descriptions.get(sensor, 'Unknown sensor')
+        if description == 'Not implemented':
+            return -1
         return self._last_update
