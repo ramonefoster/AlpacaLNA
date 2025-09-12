@@ -27,6 +27,13 @@ park_az = 0
 [observing]
 api_url = 'https://coopd.lna.br:8088/api/weather-now/'
 
+[safety]
+max_humidity = 95
+max_wind = 40
+min_temp = -5
+max_temp = 40
+max_leaf = 1
+risk_dew = 1
 
 [logging]
 log_level = 'INFO'

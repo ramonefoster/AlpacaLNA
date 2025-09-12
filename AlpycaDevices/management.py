@@ -49,6 +49,7 @@ from logging import Logger
 # For each *type* of device served
 from observingConditions import ObservingCondMetadata
 from dome import DomeMetadata
+from safetyMonitor import SafetyMonitorMetadata
 
 logger: Logger = None
 #logger = None                   # Safe on Python 3.7 but no intellisense in VSCode etc.
@@ -89,7 +90,13 @@ class configureddevices():
             'DeviceType'    : ObservingCondMetadata.DeviceType,
             'DeviceNumber'  : 0, # gt zero for more instances of focuser
             'UniqueID'      : ObservingCondMetadata.DeviceID
-            },            
+            },   
+            {
+            'DeviceName'    : SafetyMonitorMetadata.Name,
+            'DeviceType'    : SafetyMonitorMetadata.DeviceType,
+            'DeviceNumber'  : 0, # gt zero for more instances of focuser
+            'UniqueID'      : SafetyMonitorMetadata.DeviceID
+            },         
             {
             'DeviceName'    : DomeMetadata.Name,
             'DeviceType'    : DomeMetadata.DeviceType,

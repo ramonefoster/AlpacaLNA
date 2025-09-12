@@ -99,6 +99,15 @@ class Config:
     # ---------------
     api_url: str = get_toml('observing', 'api_url')
     # ---------------
+    # Safety Monitor Section
+    # ---------------
+    max_humidity: int = get_toml('safety', 'max_humidity')
+    max_wind: int = get_toml('safety', 'max_wind')
+    min_temp: int = get_toml('safety', 'min_temp')
+    max_temp: int = get_toml('safety', 'max_temp')
+    max_leaf: int = get_toml('safety', 'max_leaf')
+    risk_dew: int = get_toml('safety', 'risk_dew')
+    # ---------------
     # Logging Section
     # ---------------
     log_level: int = logging.getLevelName(get_toml('logging', 'log_level'))  # Not documented but works (!!!!)

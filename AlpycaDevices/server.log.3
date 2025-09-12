@@ -1,0 +1,55 @@
+2025-09-12T21:02:48.937 INFO ==STARTUP== Serving on :5555. Time stamps are UTC.
+2025-09-12T21:02:51.201 INFO Disc rcv alpacadiscovery1 from ('192.168.56.1', 58398)
+2025-09-12T21:02:51.201 INFO Disc rcv alpacadiscovery1 from ('192.168.15.8', 58399)
+2025-09-12T21:02:51.201 INFO Disc rcv alpacadiscovery1 from ('127.0.0.1', 58400)
+2025-09-12T21:02:51.212 INFO 127.0.0.1 <- [1]
+2025-09-12T21:02:51.212 INFO 192.168.15.8 <- [1]
+2025-09-12T21:02:51.212 INFO 192.168.56.1 <- [1]
+2025-09-12T21:02:51.218 INFO 192.168.56.1 <- {'ServerName': 'Alpaca LNA', 'Manufacturer': 'ASCOM Initiative', 'Version': '0.2', 'Location': 'Anywhere on Earth'}
+2025-09-12T21:02:51.218 INFO 192.168.15.8 <- {'ServerName': 'Alpaca LNA', 'Manufacturer': 'ASCOM Initiative', 'Version': '0.2', 'Location': 'Anywhere on Earth'}
+2025-09-12T21:02:51.218 INFO 127.0.0.1 <- {'ServerName': 'Alpaca LNA', 'Manufacturer': 'ASCOM Initiative', 'Version': '0.2', 'Location': 'Anywhere on Earth'}
+2025-09-12T21:02:51.218 INFO 127.0.0.1 <- [{'DeviceName': 'OPD Weather Station', 'DeviceType': 'ObservingConditions', 'DeviceNumber': 0, 'UniqueID': '1892ED30-92F3-4236-843E-DA8EEEF2D1CC'}, {'DeviceName': 'OPD Safety Monitor', 'DeviceType': 'SafetyMonitor', 'DeviceNumber': 0, 'UniqueID': '1892ED30-92F3-4236-843E-DA8EEEF2D1CC'}, {'DeviceName': 'OPD Dome', 'DeviceType': 'Dome', 'DeviceNumber': 0, 'UniqueID': '528d3b9d-9aa0-4907-ac5a-1cd2eef372ed'}]
+2025-09-12T21:02:51.218 INFO 192.168.15.8 <- [{'DeviceName': 'OPD Weather Station', 'DeviceType': 'ObservingConditions', 'DeviceNumber': 0, 'UniqueID': '1892ED30-92F3-4236-843E-DA8EEEF2D1CC'}, {'DeviceName': 'OPD Safety Monitor', 'DeviceType': 'SafetyMonitor', 'DeviceNumber': 0, 'UniqueID': '1892ED30-92F3-4236-843E-DA8EEEF2D1CC'}, {'DeviceName': 'OPD Dome', 'DeviceType': 'Dome', 'DeviceNumber': 0, 'UniqueID': '528d3b9d-9aa0-4907-ac5a-1cd2eef372ed'}]
+2025-09-12T21:02:51.218 INFO 192.168.56.1 <- [{'DeviceName': 'OPD Weather Station', 'DeviceType': 'ObservingConditions', 'DeviceNumber': 0, 'UniqueID': '1892ED30-92F3-4236-843E-DA8EEEF2D1CC'}, {'DeviceName': 'OPD Safety Monitor', 'DeviceType': 'SafetyMonitor', 'DeviceNumber': 0, 'UniqueID': '1892ED30-92F3-4236-843E-DA8EEEF2D1CC'}, {'DeviceName': 'OPD Dome', 'DeviceType': 'Dome', 'DeviceNumber': 0, 'UniqueID': '528d3b9d-9aa0-4907-ac5a-1cd2eef372ed'}]
+2025-09-12T21:02:55.030 INFO 192.168.15.8 -> GET /api/v1/safetymonitor/0/issafe?ClientID=1&ClientTransactionID=5
+2025-09-12T21:02:55.030 ERROR NotConnectedException: The device is not connected.
+2025-09-12T21:02:55.038 INFO 192.168.15.8 -> PUT /api/v1/safetymonitor/0/connected
+2025-09-12T21:02:55.038 INFO 192.168.15.8 -> {'Connected': 'True', 'ClientID': '1', 'ClientTransactionID': '6'}
+2025-09-12T21:02:56.139 INFO [connected]
+2025-09-12T21:02:56.181 INFO 192.168.15.8 -> GET /api/v1/safetymonitor/0/interfaceversion?ClientID=1&ClientTransactionID=7
+2025-09-12T21:02:56.181 ERROR An uncaught NameError exception occurred:
+2025-09-12T21:02:56.181 ERROR name 'ObservingCondMetadata' is not defined
+2025-09-12T21:02:56.187 ERROR '  File "falcon\\app.py", line 365, in falcon.app.App.__call__\n'
+2025-09-12T21:02:56.187 ERROR '  File "C:\\Users\\ramon\\AppData\\Local\\Programs\\Python\\Python39\\lib\\site-packages\\falcon\\hooks.py", line 264, in do_before\n    responder(self, req, resp, **kwargs)\n'
+2025-09-12T21:02:56.187 ERROR '  File "C:\\Users\\ramon\\OneDrive\\햞ea de Trabalho\\AlpacaLNA\\AlpycaDevices\\safetyMonitor.py", line 97, in on_get\n    resp.text = PropertyResponse(ObservingCondMetadata.InterfaceVersion, req).json\n'
+2025-09-12T21:02:56.201 INFO 192.168.15.8 -> GET /api/v1/safetymonitor/0/description?ClientID=1&ClientTransactionID=8
+2025-09-12T21:02:56.201 ERROR An uncaught NameError exception occurred:
+2025-09-12T21:02:56.201 ERROR name 'ObservingCondMetadata' is not defined
+2025-09-12T21:02:56.201 ERROR '  File "falcon\\app.py", line 365, in falcon.app.App.__call__\n'
+2025-09-12T21:02:56.201 ERROR '  File "C:\\Users\\ramon\\AppData\\Local\\Programs\\Python\\Python39\\lib\\site-packages\\falcon\\hooks.py", line 264, in do_before\n    responder(self, req, resp, **kwargs)\n'
+2025-09-12T21:02:56.201 ERROR '  File "C:\\Users\\ramon\\OneDrive\\햞ea de Trabalho\\AlpacaLNA\\AlpycaDevices\\safetyMonitor.py", line 87, in on_get\n    resp.text = PropertyResponse(ObservingCondMetadata.Description, req).json\n'
+2025-09-12T21:02:56.206 INFO 192.168.15.8 -> GET /api/v1/safetymonitor/0/driverinfo?ClientID=1&ClientTransactionID=9
+2025-09-12T21:02:56.206 ERROR An uncaught NameError exception occurred:
+2025-09-12T21:02:56.206 ERROR name 'ObservingCondMetadata' is not defined
+2025-09-12T21:02:56.207 ERROR '  File "falcon\\app.py", line 365, in falcon.app.App.__call__\n'
+2025-09-12T21:02:56.207 ERROR '  File "C:\\Users\\ramon\\AppData\\Local\\Programs\\Python\\Python39\\lib\\site-packages\\falcon\\hooks.py", line 264, in do_before\n    responder(self, req, resp, **kwargs)\n'
+2025-09-12T21:02:56.207 ERROR '  File "C:\\Users\\ramon\\OneDrive\\햞ea de Trabalho\\AlpacaLNA\\AlpycaDevices\\safetyMonitor.py", line 92, in on_get\n    resp.text = PropertyResponse(ObservingCondMetadata.Info, req).json\n'
+2025-09-12T21:02:56.211 INFO 192.168.15.8 -> GET /api/v1/safetymonitor/0/driverversion?ClientID=1&ClientTransactionID=10
+2025-09-12T21:02:56.212 ERROR An uncaught NameError exception occurred:
+2025-09-12T21:02:56.212 ERROR name 'ObservingCondMetadata' is not defined
+2025-09-12T21:02:56.212 ERROR '  File "falcon\\app.py", line 365, in falcon.app.App.__call__\n'
+2025-09-12T21:02:56.213 ERROR '  File "C:\\Users\\ramon\\AppData\\Local\\Programs\\Python\\Python39\\lib\\site-packages\\falcon\\hooks.py", line 264, in do_before\n    responder(self, req, resp, **kwargs)\n'
+2025-09-12T21:02:56.213 ERROR '  File "C:\\Users\\ramon\\OneDrive\\햞ea de Trabalho\\AlpacaLNA\\AlpycaDevices\\safetyMonitor.py", line 102, in on_get\n    resp.text = PropertyResponse(ObservingCondMetadata.Version, req).json\n'
+2025-09-12T21:02:56.216 INFO 192.168.15.8 -> GET /api/v1/safetymonitor/0/name?ClientID=1&ClientTransactionID=11
+2025-09-12T21:02:56.216 ERROR An uncaught NameError exception occurred:
+2025-09-12T21:02:56.216 ERROR name 'ObservingCondMetadata' is not defined
+2025-09-12T21:02:56.217 ERROR '  File "falcon\\app.py", line 365, in falcon.app.App.__call__\n'
+2025-09-12T21:02:56.217 ERROR '  File "C:\\Users\\ramon\\AppData\\Local\\Programs\\Python\\Python39\\lib\\site-packages\\falcon\\hooks.py", line 264, in do_before\n    responder(self, req, resp, **kwargs)\n'
+2025-09-12T21:02:56.217 ERROR '  File "C:\\Users\\ramon\\OneDrive\\햞ea de Trabalho\\AlpacaLNA\\AlpycaDevices\\safetyMonitor.py", line 107, in on_get\n    resp.text = PropertyResponse(ObservingCondMetadata.Name, req).json\n'
+2025-09-12T21:02:56.221 INFO 192.168.15.8 -> GET /api/v1/safetymonitor/0/supportedactions?ClientID=1&ClientTransactionID=12
+2025-09-12T21:02:56.221 INFO 192.168.15.8 <- []
+2025-09-12T21:02:56.225 INFO 192.168.15.8 -> GET /api/v1/safetymonitor/0/issafe?ClientID=1&ClientTransactionID=13
+2025-09-12T21:02:56.225 INFO 192.168.15.8 <- False
+2025-09-12T21:02:56.230 INFO 192.168.15.8 -> PUT /api/v1/safetymonitor/0/connected
+2025-09-12T21:02:56.230 INFO 192.168.15.8 -> {'Connected': 'False', 'ClientID': '1', 'ClientTransactionID': '14'}
+2025-09-12T21:02:57.232 INFO [disconnected]

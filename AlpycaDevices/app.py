@@ -74,6 +74,7 @@ from shr import set_shr_logger
 #########################
 import observingConditions
 import dome
+import safetyMonitor
 
 #--------------
 API_VERSION = 1
@@ -223,12 +224,14 @@ def main():
 
     dome.start_dome_device(logger)
     observingConditions.start_obsC_device(logger)
+    safetyMonitor.start_safe_monitorice(logger)
 
     #########################
     # FOR EACH ASCOM DEVICE #
     #########################
     dome.logger = logger
     observingConditions.logger = logger
+    safetyMonitor.logger = logger
 
     # -----------------------------
     # Last-Chance Exception Handler
@@ -253,6 +256,7 @@ def main():
     #########################
     init_routes(falc_app, 'observingconditions', observingConditions)
     init_routes(falc_app, 'dome', dome)
+    init_routes(falc_app, 'safetymonitor', safetyMonitor)
     #
     # Initialize routes for Alpaca support endpoints
     falc_app.add_route('/management/apiversions', management.apiversions())
@@ -260,6 +264,7 @@ def main():
     falc_app.add_route(f'/management/v{API_VERSION}/configureddevices', management.configureddevices())
     falc_app.add_route('/setup', setup.svrsetup())
     falc_app.add_route(f'/setup/v{API_VERSION}/observingconditions/{{devnum}}/setup', setup.devsetup())
+    falc_app.add_route(f'/setup/v{API_VERSION}/safetymonitor/{{devnum}}/setup', setup.devsetup())
     falc_app.add_route(f'/setup/v{API_VERSION}/dome/{{devnum}}/setup', setup.devsetup())
 
     #
