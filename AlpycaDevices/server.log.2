@@ -1,0 +1,40 @@
+2025-09-12T18:55:50.478 INFO ==STARTUP== Serving on :5555. Time stamps are UTC.
+2025-09-12T18:55:54.311 INFO Disc rcv alpacadiscovery1 from ('192.168.56.1', 50155)
+2025-09-12T18:55:54.312 INFO Disc rcv alpacadiscovery1 from ('192.168.42.238', 50156)
+2025-09-12T18:55:54.312 INFO Disc rcv alpacadiscovery1 from ('127.0.0.1', 50157)
+2025-09-12T18:55:54.319 INFO 192.168.42.238 <- [1]
+2025-09-12T18:55:54.320 INFO 192.168.56.1 <- [1]
+2025-09-12T18:55:54.321 INFO 127.0.0.1 <- [1]
+2025-09-12T18:55:54.323 INFO 192.168.42.238 <- {'ServerName': 'Alpaca LNA', 'Manufacturer': 'ASCOM Initiative', 'Version': '0.2', 'Location': 'Anywhere on Earth'}
+2025-09-12T18:55:54.329 INFO 127.0.0.1 <- {'ServerName': 'Alpaca LNA', 'Manufacturer': 'ASCOM Initiative', 'Version': '0.2', 'Location': 'Anywhere on Earth'}
+2025-09-12T18:55:54.333 INFO 192.168.56.1 <- {'ServerName': 'Alpaca LNA', 'Manufacturer': 'ASCOM Initiative', 'Version': '0.2', 'Location': 'Anywhere on Earth'}
+2025-09-12T18:55:54.333 INFO 192.168.42.238 <- [{'DeviceName': 'OPD Weather Station', 'DeviceType': 'ObservingConditions', 'DeviceNumber': 0, 'UniqueID': '1892ED30-92F3-4236-843E-DA8EEEF2D1CC'}, {'DeviceName': 'OPD Dome', 'DeviceType': 'Dome', 'DeviceNumber': 0, 'UniqueID': '528d3b9d-9aa0-4907-ac5a-1cd2eef372ed'}]
+2025-09-12T18:55:54.334 INFO 127.0.0.1 <- [{'DeviceName': 'OPD Weather Station', 'DeviceType': 'ObservingConditions', 'DeviceNumber': 0, 'UniqueID': '1892ED30-92F3-4236-843E-DA8EEEF2D1CC'}, {'DeviceName': 'OPD Dome', 'DeviceType': 'Dome', 'DeviceNumber': 0, 'UniqueID': '528d3b9d-9aa0-4907-ac5a-1cd2eef372ed'}]
+2025-09-12T18:55:54.334 INFO 192.168.56.1 <- [{'DeviceName': 'OPD Weather Station', 'DeviceType': 'ObservingConditions', 'DeviceNumber': 0, 'UniqueID': '1892ED30-92F3-4236-843E-DA8EEEF2D1CC'}, {'DeviceName': 'OPD Dome', 'DeviceType': 'Dome', 'DeviceNumber': 0, 'UniqueID': '528d3b9d-9aa0-4907-ac5a-1cd2eef372ed'}]
+2025-09-12T18:55:59.360 INFO 192.168.56.1 -> PUT /api/v1/observingconditions/0/connected
+2025-09-12T18:55:59.360 INFO 192.168.56.1 -> {'Connected': 'True', 'ClientID': '30941', 'ClientTransactionID': '3'}
+2025-09-12T18:55:59.490 INFO [connected]
+2025-09-12T18:55:59.518 INFO 192.168.56.1 -> GET /api/v1/observingconditions/0/connected?ClientID=30941&ClientTransactionID=4
+2025-09-12T18:55:59.519 INFO 192.168.56.1 <- True
+2025-09-12T18:55:59.546 INFO 192.168.56.1 -> GET /api/v1/observingconditions/0/averageperiod?ClientID=30941&ClientTransactionID=5
+2025-09-12T18:55:59.546 INFO 192.168.56.1 <- 12
+2025-09-12T18:55:59.550 INFO 192.168.56.1 -> GET /api/v1/observingconditions/0/description?ClientID=30941&ClientTransactionID=6
+2025-09-12T18:55:59.550 INFO 192.168.56.1 <- Uses OPD weather station
+2025-09-12T18:55:59.552 INFO 192.168.56.1 -> GET /api/v1/observingconditions/0/cloudcover?ClientID=30941&ClientTransactionID=7
+2025-09-12T18:55:59.552 ERROR NotImplementedException: Property or method not implemented.
+2025-09-12T18:55:59.556 INFO 192.168.56.1 -> GET /api/v1/observingconditions/0/driverinfo?ClientID=30941&ClientTransactionID=8
+2025-09-12T18:55:59.556 INFO 192.168.56.1 <- Alpaca Device
+Observing Conditions
+ASCOM Initiative
+2025-09-12T18:55:59.557 INFO 192.168.56.1 -> GET /api/v1/observingconditions/0/driverversion?ClientID=30941&ClientTransactionID=10
+2025-09-12T18:55:59.557 INFO 192.168.56.1 <- 0.2
+2025-09-12T18:55:59.765 INFO 192.168.56.1 -> GET /api/v1/observingconditions/0/dewpoint?ClientID=30941&ClientTransactionID=11
+2025-09-12T18:55:59.766 ERROR DriverException: dewpoint failed
+Traceback (most recent call last):
+  File "C:\Users\ramon\OneDrive\Área de Trabalho\AlpacaLNA\AlpycaDevices\observingConditions.py", line 379, in on_get
+    val = obsC_dev.dew_point
+  File "C:\Users\ramon\OneDrive\Área de Trabalho\AlpacaLNA\AlpycaDevices\observingDevice.py", line 143, in dew_point
+    self._dew_point = temp - ((100 - hum) / 5)
+TypeError: unsupported operand type(s) for -: 'int' and 'str'
+
+2025-09-12T18:55:59.970 INFO 192.168.56.1 -> GET /api/v1/observingconditions/0/dewpoint?ClientID=30941&ClientTransactionID=12

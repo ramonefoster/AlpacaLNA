@@ -24,6 +24,10 @@ can_slave = true
 can_sync = false
 park_az = 0
 
+[observing]
+api_url = 'https://coopd.lna.br:8088/api/weather-now/'
+
+
 [logging]
 log_level = 'INFO'
 log_to_stdout = false

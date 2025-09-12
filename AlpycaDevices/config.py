@@ -95,6 +95,10 @@ class Config:
     can_sync: bool = get_toml('device', 'can_sync')
     park_az: int = get_toml('device', 'park_az')
     # ---------------
+    # Observing Conditions Section
+    # ---------------
+    api_url: str = get_toml('observing', 'api_url')
+    # ---------------
     # Logging Section
     # ---------------
     log_level: int = logging.getLevelName(get_toml('logging', 'log_level'))  # Not documented but works (!!!!)

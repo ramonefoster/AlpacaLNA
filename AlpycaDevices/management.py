@@ -47,8 +47,7 @@ from shr import PropertyResponse, DeviceMetadata
 from config import Config
 from logging import Logger
 # For each *type* of device served
-from focuser import FocuserMetadata
-from rotator import RotatorMetadata
+from observingConditions import ObservingCondMetadata
 from dome import DomeMetadata
 
 logger: Logger = None
@@ -86,17 +85,11 @@ class configureddevices():
     def on_get(self, req: Request, resp: Response):
         confarray = [    # TODO ADD ONE FOR EACH DEVICE TYPE AND INSTANCE SERVED
             {
-            'DeviceName'    : FocuserMetadata.Name,
-            'DeviceType'    : FocuserMetadata.DeviceType,
+            'DeviceName'    : ObservingCondMetadata.Name,
+            'DeviceType'    : ObservingCondMetadata.DeviceType,
             'DeviceNumber'  : 0, # gt zero for more instances of focuser
-            'UniqueID'      : FocuserMetadata.DeviceID
-            },
-            {
-            'DeviceName'    : RotatorMetadata.Name,
-            'DeviceType'    : RotatorMetadata.DeviceType,
-            'DeviceNumber'  : 0,
-            'UniqueID'      : RotatorMetadata.DeviceID
-            },
+            'UniqueID'      : ObservingCondMetadata.DeviceID
+            },            
             {
             'DeviceName'    : DomeMetadata.Name,
             'DeviceType'    : DomeMetadata.DeviceType,

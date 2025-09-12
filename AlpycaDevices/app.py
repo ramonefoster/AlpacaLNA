@@ -72,8 +72,7 @@ from shr import set_shr_logger
 #########################
 # FOR EACH ASCOM DEVICE #
 #########################
-import focuser
-import rotator
+import observingConditions
 import dome
 
 #--------------
@@ -222,16 +221,14 @@ def main():
     discovery.logger = logger
     set_shr_logger(logger)
 
-    focuser.start_foc_device(logger) #Idea to pass COM port when using UI
-    rotator.start_rot_device(logger)
     dome.start_dome_device(logger)
+    observingConditions.start_obsC_device(logger)
 
     #########################
     # FOR EACH ASCOM DEVICE #
     #########################
-    focuser.logger = logger
-    rotator.logger = logger
     dome.logger = logger
+    observingConditions.logger = logger
 
     # -----------------------------
     # Last-Chance Exception Handler
@@ -254,8 +251,7 @@ def main():
     #########################
     # FOR EACH ASCOM DEVICE #
     #########################
-    init_routes(falc_app, 'focuser', focuser)
-    init_routes(falc_app, 'rotator', rotator)
+    init_routes(falc_app, 'observingconditions', observingConditions)
     init_routes(falc_app, 'dome', dome)
     #
     # Initialize routes for Alpaca support endpoints
@@ -263,8 +259,7 @@ def main():
     falc_app.add_route(f'/management/v{API_VERSION}/description', management.description())
     falc_app.add_route(f'/management/v{API_VERSION}/configureddevices', management.configureddevices())
     falc_app.add_route('/setup', setup.svrsetup())
-    falc_app.add_route(f'/setup/v{API_VERSION}/focuser/{{devnum}}/setup', setup.devsetup())
-    falc_app.add_route(f'/setup/v{API_VERSION}/rotator/{{devnum}}/setup', setup.devsetup())
+    falc_app.add_route(f'/setup/v{API_VERSION}/observingconditions/{{devnum}}/setup', setup.devsetup())
     falc_app.add_route(f'/setup/v{API_VERSION}/dome/{{devnum}}/setup', setup.devsetup())
 
     #
