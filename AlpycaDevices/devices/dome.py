@@ -14,7 +14,7 @@ from shr import PropertyResponse, MethodResponse, PreProcessRequest, \
                 get_request_field, to_bool
 from exceptions import *        # Nothing but exception classes
 
-from domeDevice import Dome
+from devices.domeDevice import Dome
 
 logger: Logger = None
 

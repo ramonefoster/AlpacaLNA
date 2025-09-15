@@ -18,7 +18,7 @@ from shr import PropertyResponse, MethodResponse, PreProcessRequest, \
                 get_request_field, to_bool
 from exceptions import *        
 
-from focuserDevice import Focuser
+from devices.focuserDevice import Focuser
 
 logger: Logger = None
 

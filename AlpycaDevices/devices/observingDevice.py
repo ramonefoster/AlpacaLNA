@@ -161,7 +161,7 @@ class ObservingConditions():
         res = float(self._status.get('bar', 0))
         self._pressure = res * 1.33322 # convert mmHg to hPa
         self._lock.release()
-        return res
+        return self._pressure
     
     @property
     def rain_rate(self) -> float:

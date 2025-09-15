@@ -16,7 +16,7 @@ from logging import Logger
 from shr import PropertyResponse, MethodResponse, PreProcessRequest, \
                 get_request_field, to_bool
 from exceptions import *        # Nothing but exception classes
-from observingDevice import ObservingConditions
+from devices.observingDevice import ObservingConditions
 
 logger: Logger = None
 #logger = None                   # Safe on Python 3.7 but no intellisense in VSCode etc.

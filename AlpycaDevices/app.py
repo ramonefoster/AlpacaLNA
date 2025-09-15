@@ -72,9 +72,9 @@ from shr import set_shr_logger
 #########################
 # FOR EACH ASCOM DEVICE #
 #########################
-import observingConditions
-import dome
-import safetyMonitor
+from devices import observingConditions
+from devices import dome
+from devices import safetyMonitor
 
 #--------------
 API_VERSION = 1

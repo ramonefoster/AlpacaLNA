@@ -47,9 +47,9 @@ from shr import PropertyResponse, DeviceMetadata
 from config import Config
 from logging import Logger
 # For each *type* of device served
-from observingConditions import ObservingCondMetadata
-from dome import DomeMetadata
-from safetyMonitor import SafetyMonitorMetadata
+from devices.observingConditions import ObservingCondMetadata
+from devices.dome import DomeMetadata
+from devices.safetyMonitor import SafetyMonitorMetadata
 
 logger: Logger = None
 #logger = None                   # Safe on Python 3.7 but no intellisense in VSCode etc.
