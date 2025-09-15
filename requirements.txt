@@ -1,3 +1,5 @@
 falcon==4.1.0
 pyserial==3.5
 toml==0.10.2
+requests==2.32.5
+python-dateutils==2.9.0
