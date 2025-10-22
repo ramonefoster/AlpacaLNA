@@ -366,7 +366,7 @@ class slaved:
 
         try:
             # -----------------------------
-            dome.slaved(slaved)
+            dome.slaved = slaved
             # -----------------------------
             resp.text = MethodResponse(req).json
         except Exception as ex:
