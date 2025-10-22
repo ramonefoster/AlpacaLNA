@@ -50,6 +50,7 @@ from logging import Logger
 from devices.observingConditions import ObservingCondMetadata
 from devices.dome import DomeMetadata
 from devices.safetyMonitor import SafetyMonitorMetadata
+from devices.camera import CameraMetadata
 
 logger: Logger = None
 #logger = None                   # Safe on Python 3.7 but no intellisense in VSCode etc.
@@ -96,7 +97,13 @@ class configureddevices():
             'DeviceType'    : SafetyMonitorMetadata.DeviceType,
             'DeviceNumber'  : 0, # gt zero for more instances of focuser
             'UniqueID'      : SafetyMonitorMetadata.DeviceID
-            },         
+            },  
+            # {
+            # 'DeviceName'    : CameraMetadata.Name,
+            # 'DeviceType'    : CameraMetadata.DeviceType,
+            # 'DeviceNumber'  : 0, # gt zero for more instances of focuser
+            # 'UniqueID'      : CameraMetadata.DeviceID
+            # },       
             {
             'DeviceName'    : DomeMetadata.Name,
             'DeviceType'    : DomeMetadata.DeviceType,

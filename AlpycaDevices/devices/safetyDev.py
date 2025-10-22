@@ -34,25 +34,32 @@ class SafetyMonitor():
                     wind_speed = float(self._status.get('wind_speed', 50))
                     leaf = float(self._status.get('leaf', 10))
                     dew = temp - ((100 - hum) / 5)
-                    if hum < Config.max_humidity:
-                        self._is_safe = True
-                    elif wind_speed < Config.max_wind:
-                        self._is_safe = True
-                    elif temp > Config.min_temp and temp < Config.max_temp:
-                        self._is_safe = True
-                    elif leaf < Config.max_leaf:
-                        self._is_safe = True
-                    elif dew < Config.risk_dew:
-                        self._is_safe = True
-                    else:
+                    try:                        
+                        if (
+                            hum < Config.max_humidity
+                            and wind_speed < Config.max_wind
+                            and Config.min_temp < temp < Config.max_temp
+                            and leaf < Config.max_leaf
+                            and dew > Config.risk_dew
+                        ):
+                            self._is_safe = True
+                        else:
+                            print("Unsafe")
+                            self._is_safe = False
+                    except Exception as e:
+                        print(e)
+                        # Fail-safe: assume unsafe if data is unavailable
                         self._is_safe = False
+
                     self._lock.release()
                 else:
+                    self._is_safe = False
                     raise RuntimeError(f'Error fetching data: {response.status_code}')                
             except:
+                self._is_safe = False
                 raise RuntimeError('Cannot Connect')
             # wait 60 seconds to next update
-            time.sleep(60)
+            time.sleep(33)
 
     @property
     def connected(self):

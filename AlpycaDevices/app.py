@@ -75,6 +75,7 @@ from shr import set_shr_logger
 from devices import observingConditions
 from devices import dome
 from devices import safetyMonitor
+# from devices import camera
 
 #--------------
 API_VERSION = 1
@@ -225,6 +226,7 @@ def main():
     dome.start_dome_device(logger)
     observingConditions.start_obsC_device(logger)
     safetyMonitor.start_safe_monitorice(logger)
+    # camera.start_camera_device(logger)
 
     #########################
     # FOR EACH ASCOM DEVICE #
@@ -232,6 +234,7 @@ def main():
     dome.logger = logger
     observingConditions.logger = logger
     safetyMonitor.logger = logger
+    # camera.logger = logger
 
     # -----------------------------
     # Last-Chance Exception Handler
@@ -257,6 +260,7 @@ def main():
     init_routes(falc_app, 'observingconditions', observingConditions)
     init_routes(falc_app, 'dome', dome)
     init_routes(falc_app, 'safetymonitor', safetyMonitor)
+    # init_routes(falc_app, 'camera', camera)
     #
     # Initialize routes for Alpaca support endpoints
     falc_app.add_route('/management/apiversions', management.apiversions())
@@ -266,6 +270,7 @@ def main():
     falc_app.add_route(f'/setup/v{API_VERSION}/observingconditions/{{devnum}}/setup', setup.devsetup())
     falc_app.add_route(f'/setup/v{API_VERSION}/safetymonitor/{{devnum}}/setup', setup.devsetup())
     falc_app.add_route(f'/setup/v{API_VERSION}/dome/{{devnum}}/setup', setup.devsetup())
+    # falc_app.add_route(f'/setup/v{API_VERSION}/camera/{{devnum}}/setup', setup.devsetup())
 
     #
     # Install the unhandled exception processor. See above,
