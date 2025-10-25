@@ -14,7 +14,7 @@ from shr import PropertyResponse, MethodResponse, PreProcessRequest, \
                 get_request_field, to_bool
 from exceptions import *        # Nothing but exception classes
 
-from devices.domeDevice import Dome
+from domeDevice import Dome
 
 logger: Logger = None
 
@@ -56,7 +56,33 @@ def start_dome_device(logger: logger):
 @before(PreProcessRequest(maxdev))
 class Action:
     def on_put(self, req: Request, resp: Response, devnum: int):
-        resp.text = MethodResponse(req, NotImplementedException()).json
+        """
+        Executes the specified action.
+        """
+        if not dome.connected:
+            resp.text = MethodResponse(req, NotConnectedException()).json
+            return
+
+        try:
+            action_name = get_request_field('Action', req).lower() 
+            
+            parameters = get_request_field('Parameters', req, default="")
+
+            if action_name == "flaton":
+                dome.flat_on()
+                resp.text = MethodResponse(req).json
+
+            elif action_name == "flatoff":
+                dome.flat_off()
+                resp.text = MethodResponse(req).json
+
+            else:
+                resp.text = MethodResponse(req,
+                                InvalidValueException(f"Action '{action_name}' is not supported.")).json
+
+        except Exception as ex:
+            resp.text = MethodResponse(req,
+                            DriverException(0x500, f'Dome.Action failed', ex)).json
 
 @before(PreProcessRequest(maxdev))
 class CommandBlind:
@@ -101,7 +127,11 @@ class Name():
 @before(PreProcessRequest(maxdev))
 class SupportedActions():
     def on_get(self, req: Request, resp: Response, devnum: int):
-        resp.text = PropertyResponse([], req).json  # Not PropertyNotImplemented
+        """
+        Returns the list of custom actions supported by the driver.
+        """
+        actions = ["flaton", "flatoff"]
+        resp.text = PropertyResponse(actions, req).json
 
 @before(PreProcessRequest(maxdev))
 class connected:

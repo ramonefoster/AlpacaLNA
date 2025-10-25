@@ -333,12 +333,51 @@ class Dome():
         self._slewing = False
         self._lock.release()
     
+    def flat_on(self) -> None:
+        """
+        Sends the serial command to turn the flat lamp ON.
+        """
+        self.logger.info('[FlatLamp] Turning ON')
+        
+        cmd_to_send = "MEADE FLAT_WEAK LIGAR\r" 
+
+        resp = 'ACK' in self._write(cmd_to_send)
+        if not resp:
+            # Optional: try again if it fails once
+            self.logger.warning('[FlatLamp] First attempt failed, trying again.')
+            resp = 'ACK' in self._write(cmd_to_send)
+            if not resp:    
+                self.logger.error('[FlatLamp] Failed to turn ON')
+                raise RuntimeError('Flat Lamp ON command failed')
+        
+        self.logger.info('[FlatLamp] Successfully turned ON')
+
+    def flat_off(self) -> None:
+        """
+        Sends the serial command to turn the flat lamp OFF.
+        """
+        self.logger.info('[FlatLamp] Turning OFF')
+
+        cmd_to_send = "MEADE FLAT_WEAK DESLIGAR\r"
+
+        resp = 'ACK' in self._write(cmd_to_send)
+        if not resp:
+            # Optional: try again if it fails once
+            self.logger.warning('[FlatLamp] First attempt failed, trying again.')
+            resp = 'ACK' in self._write(cmd_to_send)
+            if not resp:    
+                self.logger.error('[FlatLamp] Failed to turn OFF')
+                raise RuntimeError('Flat Lamp OFF command failed')
+
+        self.logger.info('[FlatLamp] Successfully turned OFF')
+    
     def _write(self, cmd):
         if self._serial.is_open:
             try:    
-                time.sleep(.05)            
-                self._serial.write(bytes(cmd, 'utf-8'))
-                ack = self._serial.readline().decode('utf-8').rstrip()                            
+                cmd = (cmd + '\r\n').encode('ascii')
+                self._serial.write(cmd)
+                time.sleep(.2)
+                ack = self._serial.readline().decode('ascii').rstrip()                            
                 return ack
             except Exception as e:
                 print("Error writing COM: "+ str(e))
