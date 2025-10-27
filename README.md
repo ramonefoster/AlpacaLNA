@@ -1,6 +1,9 @@
 # AlpacaLNA
 ASCOM/ALPACA devices for Pico dos Dias Observatory Instruments
 
+## N.I.N.A
+> For SupportedActions (Flat Lamp On, and OFF for example), use the "Device Actions and Commands" plugin. 
+
 ## Dome
 > Tested with LNA Dome (Meade 40 building)
 
