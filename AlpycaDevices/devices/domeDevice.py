@@ -131,9 +131,9 @@ class Dome():
                 return
 
             try:
-                self._slewing = bool(int(status_bits[12]))
+                self._slewing = bool(int(status_bits[3]))
 
-                shutter = int(status_bits[15])
+                shutter = int(status_bits[6])
                 if shutter == 1:
                     self._shutter_status = 0
                 elif shutter == 0:
