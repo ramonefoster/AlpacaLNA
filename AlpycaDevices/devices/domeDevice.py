@@ -82,7 +82,7 @@ class Dome():
             self._lock.release()
             self.disconnect()
         if self._connected:
-            self._write("MEADE DOMO INIT\r")
+            self._write("MEADE DOMO INIT")
             self.logger.info('[connected]')
         else:
             self.logger.info('[disconnected]')
@@ -104,24 +104,50 @@ class Dome():
     
     def status(self):
         self._lock.acquire()
-        ack = self._write("MEADE PROG STATUS\r")
-        if '*' in ack:
+
+        try:
+            ack = self._write("MEADE PROG STATUS")
+
+            if not ack or '*' not in ack:
+                self.logger.error(f'[Reading] Invalid ACK: {ack}')
+                return
+
+            parts = ack.split('*')
+            if len(parts) != 2:
+                self.logger.error(f'[Reading] Malformed ACK: {ack}')
+                return
+
             try:
-                dome_lcb = int(re.search(r'\d+', ack[0:12]).group())
-            except:
-                dome_lcb = 855
-            self._azimuth = self.barcode_to_azimuth(dome_lcb) 
-            if self._home_az != self._azimuth:
-                self._at_home = False
-            else:
-                self._at_home = True
-            self._slewing = bool(int(ack[16])) 
-            shutter = int(ack[19])
-            if shutter == 1:
-                self._shutter_status = 0
-            elif shutter == 0:
-                self._shutter_status = 1
-        self._lock.release()
+                dome_lcb = int(parts[0].strip())
+            except ValueError:
+                self.logger.error(f'[Reading] Invalid LCB: {parts[0]}')
+                return
+
+            raw_bits = parts[1].strip()
+            status_bits = ''.join(c for c in raw_bits if c in '01')
+
+            if len(status_bits) < 16:
+                self.logger.error(f'[Reading] Incomplete bitfield: {raw_bits}')
+                return
+
+            try:
+                self._slewing = bool(int(status_bits[12]))
+
+                shutter = int(status_bits[15])
+                if shutter == 1:
+                    self._shutter_status = 0
+                elif shutter == 0:
+                    self._shutter_status = 1
+
+            except Exception as e:
+                self.logger.error(f'[Parsing Bits] {e} | bits={status_bits}')
+                return
+
+            self._azimuth = self.barcode_to_azimuth(dome_lcb)
+            self._at_home = (self._home_az == self._azimuth)
+
+        finally:
+            self._lock.release()
     
     @property
     def altitude(self) -> float:
@@ -268,7 +294,7 @@ class Dome():
         elif azimuth >= 252 and azimuth < 360:
             tag = 675 + math.ceil((azimuth) / 2)
 
-        self._slewing = 'ACK' in self._write("MEADE DOMO MOVER = " + str(tag) + "\r")
+        self._slewing = 'ACK' in self._write("MEADE DOMO MOVER = " + str(tag))
         self._lock.acquire()
         print('[SlewToAzimuth]', self._slewing)
         self._lock.release() 
@@ -277,9 +303,9 @@ class Dome():
         if not self._can_set_shutter:
             raise RuntimeError('Cannot set Shutter')
         
-        ret = 'ACK' in self._write(f"MEADE TRAPEIRA FECHAR\r")
+        ret = 'ACK' in self._write(f"MEADE TRAPEIRA FECHAR")
         if not ret:
-            ret = 'ACK' in self._write(f"MEADE TRAPEIRA FECHAR\r")
+            ret = 'ACK' in self._write(f"MEADE TRAPEIRA FECHAR")
             if not ret:    
                 self._shutter_status = 4        
                 raise RuntimeError('Dome close FAIL!')            
@@ -311,9 +337,9 @@ class Dome():
         if not self._can_set_shutter:
             raise RuntimeError('Cannot set Shutter')
         
-        ret = 'ACK' in self._write(f"MEADE TRAPEIRA ABRIR\r")
+        ret = 'ACK' in self._write(f"MEADE TRAPEIRA ABRIR")
         if not ret:
-            ret = 'ACK' in self._write(f"MEADE TRAPEIRA ABRIR\r")
+            ret = 'ACK' in self._write(f"MEADE TRAPEIRA ABRIR")
             if not ret:    
                 self._shutter_status = 4        
                 raise RuntimeError('Dome close FAIL!')            
@@ -323,10 +349,10 @@ class Dome():
 
     def abort(self) -> None:        
         print('[AbortSlew] Aborting...')
-        resp = 'ACK' in self._write("MEADE DOMO PARAR\r")
-        self._write("MEADE PROG PARAR\r")
+        resp = 'ACK' in self._write("MEADE DOMO PARAR")
+        self._write("MEADE PROG PARAR")
         if not resp:
-            resp = 'ACK' in self._write("MEADE DOMO PARAR\r")        
+            resp = 'ACK' in self._write("MEADE DOMO PARAR")        
         if not resp:
             raise RuntimeError('Dome Abort FAIL!')
         self._lock.acquire()
@@ -339,18 +365,18 @@ class Dome():
         """
         self.logger.info('[FlatLamp] Turning ON')
         
-        cmd_to_send = "MEADE FLAT_WEAK LIGAR\r" 
+        cmd_to_send = "MEADE FLAT_WEAK LIGAR" 
 
         resp = 'ACK' in self._write(cmd_to_send)
+        print("LAMP RESPONSE", resp)
         if not resp:
-            # Optional: try again if it fails once
             self.logger.warning('[FlatLamp] First attempt failed, trying again.')
             resp = 'ACK' in self._write(cmd_to_send)
             if not resp:    
                 self.logger.error('[FlatLamp] Failed to turn ON')
                 raise RuntimeError('Flat Lamp ON command failed')
-        
-        self.logger.info('[FlatLamp] Successfully turned ON')
+        else:
+            self.logger.info('[FlatLamp] Successfully turned ON')
 
     def flat_off(self) -> None:
         """
@@ -358,26 +384,27 @@ class Dome():
         """
         self.logger.info('[FlatLamp] Turning OFF')
 
-        cmd_to_send = "MEADE FLAT_WEAK DESLIGAR\r"
+        cmd_to_send = "MEADE FLAT_WEAK DESLIGAR"
 
         resp = 'ACK' in self._write(cmd_to_send)
+        print("LAMP RESPONSE", resp)
         if not resp:
-            # Optional: try again if it fails once
             self.logger.warning('[FlatLamp] First attempt failed, trying again.')
             resp = 'ACK' in self._write(cmd_to_send)
             if not resp:    
                 self.logger.error('[FlatLamp] Failed to turn OFF')
                 raise RuntimeError('Flat Lamp OFF command failed')
-
-        self.logger.info('[FlatLamp] Successfully turned OFF')
+        else:
+            self.logger.info('[FlatLamp] Successfully turned OFF')
     
     def _write(self, cmd):
         if self._serial.is_open:
-            try:    
+            try:                 
                 cmd = (cmd + '\r\n').encode('ascii')
                 self._serial.write(cmd)
                 time.sleep(.2)
-                ack = self._serial.readline().decode('ascii').rstrip()                            
+                ack = self._serial.readline().decode('latin-1').rstrip() 
+                        
                 return ack
             except Exception as e:
                 print("Error writing COM: "+ str(e))
