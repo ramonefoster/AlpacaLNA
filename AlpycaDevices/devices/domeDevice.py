@@ -20,7 +20,7 @@ class Dome():
         self._at_park = False
         self._at_home = False
         self._shutter_status = 1
-        self._home_az = 0 #degree
+        self._home_az = 90 #degree
         self._park_az = Config.park_az #degree
         # Status Shutter:       0 = "The shutter or roof is open", 
         #                       1 = "The shutter or roof is closed", 
@@ -109,12 +109,12 @@ class Dome():
             ack = self._write("MEADE PROG STATUS")
 
             if not ack or '*' not in ack:
-                self.logger.error(f'[Reading] Invalid ACK: {ack}')
+                self.logger.error(f'[Reading] Invalid Response from device.')
                 return
 
             parts = ack.split('*')
             if len(parts) != 2:
-                self.logger.error(f'[Reading] Malformed ACK: {ack}')
+                self.logger.error(f'[Reading] Malformed ACK')
                 return
 
             try:
@@ -126,8 +126,8 @@ class Dome():
             raw_bits = parts[1].strip()
             status_bits = ''.join(c for c in raw_bits if c in '01')
 
-            if len(status_bits) < 16:
-                self.logger.error(f'[Reading] Incomplete bitfield: {raw_bits}')
+            if len(status_bits) < 8:
+                self.logger.error(f'[Reading] Incomplete bitfield')
                 return
 
             try:
@@ -399,12 +399,15 @@ class Dome():
     
     def _write(self, cmd):
         if self._serial.is_open:
-            try:                 
+            try: 
+                raw_cmd = cmd   
+                
                 cmd = (cmd + '\r\n').encode('ascii')
                 self._serial.write(cmd)
                 time.sleep(.2)
                 ack = self._serial.readline().decode('latin-1').rstrip() 
-                        
+                # if "STATUS" in raw_cmd:
+                #     print(ack) # DEBUG                        
                 return ack
             except Exception as e:
                 print("Error writing COM: "+ str(e))

@@ -277,6 +277,7 @@ def main():
     # ------------------
     # Using the lightweight built-in Python wsgi.simple_server
     with make_server(Config.ip_address, Config.port, falc_app, handler_class=LoggingWSGIRequestHandler) as httpd:
+        print(f'==STARTUP== Serving on {Config.ip_address}:{Config.port}. Time stamps are UTC.')
         logger.info(f'==STARTUP== Serving on {Config.ip_address}:{Config.port}. Time stamps are UTC.')
         # Serve until process is killed
         httpd.serve_forever()
